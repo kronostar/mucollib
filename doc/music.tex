@@ -1,0 +1,508 @@
+% phpMyAdmin LaTeX Dump
+% version 3.4.10.1deb1
+% http://www.phpmyadmin.net
+%
+% Host: localhost
+% Generation Time: May 26, 2012 at 07:34 PM
+% Server version: 5.1.61
+% PHP Version: 5.3.10-2
+% 
+% Database: 'music'
+% 
+
+%
+% Structure: Album
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Album} \label{tab:Album-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Album (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idAlbum}} & int(11) & No &  &  &  \\ \hline 
+AlbumName & varchar(120) & No &  &  &  \\ \hline 
+AlbumYear & year(4) & No &  &  &  \\ \hline 
+AlbumCatNo & varchar(20) & Yes & NULL &  &  \\ \hline 
+AlbumOrigYear & year(4) & Yes & NULL &  &  \\ \hline 
+AlbumOrigCatNo & varchar(20) & Yes & NULL &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Format\_idFormat & int(11) & No &  & Format (idFormat) &  \\ \hline 
+Genre\_idGenre & int(11) & No &  & Genre (idGenre) &  \\ \hline 
+Label\_idLabel & int(11) & No &  & Label (idLabel) &  \\ \hline 
+Label\_idLabel\_Orig & int(11) & No &  & Label (idLabel) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Album
+%
+ \begin{longtable}{|l|l|l|l|l|l|l|l|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Album} \label{tab:Album-data} \\\hline \multicolumn{1}{|c|}{\textbf{idAlbum}} & \multicolumn{1}{|c|}{\textbf{AlbumName}} & \multicolumn{1}{|c|}{\textbf{AlbumYear}} & \multicolumn{1}{|c|}{\textbf{AlbumCatNo}} & \multicolumn{1}{|c|}{\textbf{AlbumOrigYear}} & \multicolumn{1}{|c|}{\textbf{AlbumOrigCatNo}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Format\_idFormat}} & \multicolumn{1}{|c|}{\textbf{Genre\_idGenre}} & \multicolumn{1}{|c|}{\textbf{Label\_idLabel}} & \multicolumn{1}{|c|}{\textbf{Label\_idLabel\_Orig}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Album (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idAlbum}} & \multicolumn{1}{|c|}{\textbf{AlbumName}} & \multicolumn{1}{|c|}{\textbf{AlbumYear}} & \multicolumn{1}{|c|}{\textbf{AlbumCatNo}} & \multicolumn{1}{|c|}{\textbf{AlbumOrigYear}} & \multicolumn{1}{|c|}{\textbf{AlbumOrigCatNo}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Format\_idFormat}} & \multicolumn{1}{|c|}{\textbf{Genre\_idGenre}} & \multicolumn{1}{|c|}{\textbf{Label\_idLabel}} & \multicolumn{1}{|c|}{\textbf{Label\_idLabel\_Orig}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Album
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Album} \label{tab:Album-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Album (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idAlbum}} & int(11) & No &  &  &  \\ \hline 
+AlbumName & varchar(120) & No &  &  &  \\ \hline 
+AlbumYear & year(4) & No &  &  &  \\ \hline 
+AlbumCatNo & varchar(20) & Yes & NULL &  &  \\ \hline 
+AlbumOrigYear & year(4) & Yes & NULL &  &  \\ \hline 
+AlbumOrigCatNo & varchar(20) & Yes & NULL &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Format\_idFormat & int(11) & No &  & Format (idFormat) &  \\ \hline 
+Genre\_idGenre & int(11) & No &  & Genre (idGenre) &  \\ \hline 
+Label\_idLabel & int(11) & No &  & Label (idLabel) &  \\ \hline 
+Label\_idLabel\_Orig & int(11) & No &  & Label (idLabel) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: AlbumMusician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table AlbumMusician} \label{tab:AlbumMusician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table AlbumMusician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idAlbumMusician}} & int(11) & No &  &  &  \\ \hline 
+Musician\_idMusician & int(11) & No &  & Musician (idMusician) &  \\ \hline 
+Album\_idAlbum & int(11) & No &  & Album (idAlbum) &  \\ \hline 
+MusicianStatus\_idMusicianStatus & int(11) & No &  & MusicianStatus (idMusicianStatus) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: AlbumMusician
+%
+ \begin{longtable}{|l|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table AlbumMusician} \label{tab:AlbumMusician-data} \\\hline \multicolumn{1}{|c|}{\textbf{idAlbumMusician}} & \multicolumn{1}{|c|}{\textbf{Musician\_idMusician}} & \multicolumn{1}{|c|}{\textbf{Album\_idAlbum}} & \multicolumn{1}{|c|}{\textbf{MusicianStatus\_idMusicianStatus}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table AlbumMusician (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idAlbumMusician}} & \multicolumn{1}{|c|}{\textbf{Musician\_idMusician}} & \multicolumn{1}{|c|}{\textbf{Album\_idAlbum}} & \multicolumn{1}{|c|}{\textbf{MusicianStatus\_idMusicianStatus}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: AlbumMusician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table AlbumMusician} \label{tab:AlbumMusician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table AlbumMusician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idAlbumMusician}} & int(11) & No &  &  &  \\ \hline 
+Musician\_idMusician & int(11) & No &  & Musician (idMusician) &  \\ \hline 
+Album\_idAlbum & int(11) & No &  & Album (idAlbum) &  \\ \hline 
+MusicianStatus\_idMusicianStatus & int(11) & No &  & MusicianStatus (idMusicianStatus) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Artist
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Artist} \label{tab:Artist-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Artist (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idArtist}} & int(11) & No &  &  \\ \hline 
+ArtistName & varchar(250) & No &  &  \\ \hline 
+ArtistSort & varchar(250) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Artist
+%
+ \begin{longtable}{|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Artist} \label{tab:Artist-data} \\\hline \multicolumn{1}{|c|}{\textbf{idArtist}} & \multicolumn{1}{|c|}{\textbf{ArtistName}} & \multicolumn{1}{|c|}{\textbf{ArtistSort}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Artist (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idArtist}} & \multicolumn{1}{|c|}{\textbf{ArtistName}} & \multicolumn{1}{|c|}{\textbf{ArtistSort}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Artist
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Artist} \label{tab:Artist-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Artist (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idArtist}} & int(11) & No &  &  \\ \hline 
+ArtistName & varchar(250) & No &  &  \\ \hline 
+ArtistSort & varchar(250) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Format
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Format} \label{tab:Format-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Format (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idFormat}} & int(11) & No &  &  \\ \hline 
+FormatName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Format
+%
+ \begin{longtable}{|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Format} \label{tab:Format-data} \\\hline \multicolumn{1}{|c|}{\textbf{idFormat}} & \multicolumn{1}{|c|}{\textbf{FormatName}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Format (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idFormat}} & \multicolumn{1}{|c|}{\textbf{FormatName}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Format
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Format} \label{tab:Format-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Format (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idFormat}} & int(11) & No &  &  \\ \hline 
+FormatName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Genre
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Genre} \label{tab:Genre-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Genre (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idGenre}} & int(11) & No &  &  \\ \hline 
+GenreName & varchar(45) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Genre
+%
+ \begin{longtable}{|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Genre} \label{tab:Genre-data} \\\hline \multicolumn{1}{|c|}{\textbf{idGenre}} & \multicolumn{1}{|c|}{\textbf{GenreName}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Genre (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idGenre}} & \multicolumn{1}{|c|}{\textbf{GenreName}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Genre
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Genre} \label{tab:Genre-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Genre (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idGenre}} & int(11) & No &  &  \\ \hline 
+GenreName & varchar(45) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Instrument
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Instrument} \label{tab:Instrument-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Instrument (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idInstrument}} & int(11) & No &  &  \\ \hline 
+InstrumentName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Instrument
+%
+ \begin{longtable}{|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Instrument} \label{tab:Instrument-data} \\\hline \multicolumn{1}{|c|}{\textbf{idInstrument}} & \multicolumn{1}{|c|}{\textbf{InstrumentName}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Instrument (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idInstrument}} & \multicolumn{1}{|c|}{\textbf{InstrumentName}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Instrument
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Instrument} \label{tab:Instrument-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Instrument (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idInstrument}} & int(11) & No &  &  \\ \hline 
+InstrumentName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Label
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Label} \label{tab:Label-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Label (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idLabel}} & int(11) & No &  &  \\ \hline 
+LabelName & varchar(45) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Label
+%
+ \begin{longtable}{|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Label} \label{tab:Label-data} \\\hline \multicolumn{1}{|c|}{\textbf{idLabel}} & \multicolumn{1}{|c|}{\textbf{LabelName}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Label (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idLabel}} & \multicolumn{1}{|c|}{\textbf{LabelName}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Label
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table Label} \label{tab:Label-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Label (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idLabel}} & int(11) & No &  &  \\ \hline 
+LabelName & varchar(45) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Musician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Musician} \label{tab:Musician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Musician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idMusician}} & int(11) & No &  &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Instrument\_idInstrument & int(11) & No &  & Instrument (idInstrument) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Musician
+%
+ \begin{longtable}{|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Musician} \label{tab:Musician-data} \\\hline \multicolumn{1}{|c|}{\textbf{idMusician}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Instrument\_idInstrument}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Musician (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idMusician}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Instrument\_idInstrument}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Musician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Musician} \label{tab:Musician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Musician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idMusician}} & int(11) & No &  &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Instrument\_idInstrument & int(11) & No &  & Instrument (idInstrument) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: MusicianStatus
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table MusicianStatus} \label{tab:MusicianStatus-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table MusicianStatus (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idMusicianStatus}} & int(11) & No &  &  \\ \hline 
+MusicianStatusName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: MusicianStatus
+%
+ \begin{longtable}{|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table MusicianStatus} \label{tab:MusicianStatus-data} \\\hline \multicolumn{1}{|c|}{\textbf{idMusicianStatus}} & \multicolumn{1}{|c|}{\textbf{MusicianStatusName}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table MusicianStatus (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idMusicianStatus}} & \multicolumn{1}{|c|}{\textbf{MusicianStatusName}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: MusicianStatus
+%
+ \begin{longtable}{|l|c|c|c|l|} 
+ \caption{Structure of table MusicianStatus} \label{tab:MusicianStatus-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table MusicianStatus (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idMusicianStatus}} & int(11) & No &  &  \\ \hline 
+MusicianStatusName & varchar(20) & No &  &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: Song
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Song} \label{tab:Song-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Song (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSong}} & int(11) & No &  &  &  \\ \hline 
+SongName & varchar(120) & No &  &  &  \\ \hline 
+SongLength & time & Yes & NULL &  &  \\ \hline 
+SongNumber & int(11) & No &  &  &  \\ \hline 
+Album\_idAlbum & int(11) & No &  & Album (idAlbum) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: Song
+%
+ \begin{longtable}{|l|l|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table Song} \label{tab:Song-data} \\\hline \multicolumn{1}{|c|}{\textbf{idSong}} & \multicolumn{1}{|c|}{\textbf{SongName}} & \multicolumn{1}{|c|}{\textbf{SongLength}} & \multicolumn{1}{|c|}{\textbf{SongNumber}} & \multicolumn{1}{|c|}{\textbf{Album\_idAlbum}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table Song (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idSong}} & \multicolumn{1}{|c|}{\textbf{SongName}} & \multicolumn{1}{|c|}{\textbf{SongLength}} & \multicolumn{1}{|c|}{\textbf{SongNumber}} & \multicolumn{1}{|c|}{\textbf{Album\_idAlbum}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: Song
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table Song} \label{tab:Song-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table Song (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSong}} & int(11) & No &  &  &  \\ \hline 
+SongName & varchar(120) & No &  &  &  \\ \hline 
+SongLength & time & Yes & NULL &  &  \\ \hline 
+SongNumber & int(11) & No &  &  &  \\ \hline 
+Album\_idAlbum & int(11) & No &  & Album (idAlbum) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: SongComposer
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongComposer} \label{tab:SongComposer-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongComposer (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongComposer}} & int(11) & No &  &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: SongComposer
+%
+ \begin{longtable}{|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table SongComposer} \label{tab:SongComposer-data} \\\hline \multicolumn{1}{|c|}{\textbf{idSongComposer}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table SongComposer (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idSongComposer}} & \multicolumn{1}{|c|}{\textbf{Artist\_idArtist}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: SongComposer
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongComposer} \label{tab:SongComposer-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongComposer (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongComposer}} & int(11) & No &  &  &  \\ \hline 
+Artist\_idArtist & int(11) & No &  & Artist (idArtist) &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: SongMusician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongMusician} \label{tab:SongMusician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongMusician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongMusician}} & int(11) & No &  &  &  \\ \hline 
+Musician\_idMusician & int(11) & No &  & Musician (idMusician) &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+MusicianStatus\_idMusicianStatus & int(11) & No &  & MusicianStatus (idMusicianStatus) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: SongMusician
+%
+ \begin{longtable}{|l|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table SongMusician} \label{tab:SongMusician-data} \\\hline \multicolumn{1}{|c|}{\textbf{idSongMusician}} & \multicolumn{1}{|c|}{\textbf{Musician\_idMusician}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} & \multicolumn{1}{|c|}{\textbf{MusicianStatus\_idMusicianStatus}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table SongMusician (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idSongMusician}} & \multicolumn{1}{|c|}{\textbf{Musician\_idMusician}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} & \multicolumn{1}{|c|}{\textbf{MusicianStatus\_idMusicianStatus}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: SongMusician
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongMusician} \label{tab:SongMusician-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongMusician (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongMusician}} & int(11) & No &  &  &  \\ \hline 
+Musician\_idMusician & int(11) & No &  & Musician (idMusician) &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+MusicianStatus\_idMusicianStatus & int(11) & No &  & MusicianStatus (idMusicianStatus) &  \\ \hline 
+ \end{longtable}
+
+%
+% Structure: SongSection
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongSection} \label{tab:SongSection-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongSection (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongSection}} & int(11) & No &  &  &  \\ \hline 
+SongSectionRef & varchar(10) & No &  &  &  \\ \hline 
+SongSectionName & varchar(120) & No &  &  &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+ \end{longtable}
+
+%
+% Data: SongSection
+%
+ \begin{longtable}{|l|l|l|l|} 
+ \hline \endhead \hline \endfoot \hline 
+ \caption{Content of table SongSection} \label{tab:SongSection-data} \\\hline \multicolumn{1}{|c|}{\textbf{idSongSection}} & \multicolumn{1}{|c|}{\textbf{SongSectionRef}} & \multicolumn{1}{|c|}{\textbf{SongSectionName}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} \\ \hline \hline  \endfirsthead 
+\caption{Content of table SongSection (continued)} \\ \hline \multicolumn{1}{|c|}{\textbf{idSongSection}} & \multicolumn{1}{|c|}{\textbf{SongSectionRef}} & \multicolumn{1}{|c|}{\textbf{SongSectionName}} & \multicolumn{1}{|c|}{\textbf{Song\_idSong}} \\ \hline \hline \endhead \endfoot
+ \end{longtable}
+
+%
+% Structure: SongSection
+%
+ \begin{longtable}{|l|c|c|c|l|l|} 
+ \caption{Structure of table SongSection} \label{tab:SongSection-structure} \\
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline
+\endfirsthead
+ \caption{Structure of table SongSection (continued)} \\ 
+ \hline \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} & \multicolumn{1}{|c|}{\textbf{MIME}} \\ \hline \hline \endhead \endfoot 
+\textbf{\textit{idSongSection}} & int(11) & No &  &  &  \\ \hline 
+SongSectionRef & varchar(10) & No &  &  &  \\ \hline 
+SongSectionName & varchar(120) & No &  &  &  \\ \hline 
+Song\_idSong & int(11) & No &  & Song (idSong) &  \\ \hline 
+ \end{longtable}
