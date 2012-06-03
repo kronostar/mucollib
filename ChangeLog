@@ -1,4 +1,5 @@
-2012-05-27  Steve Martin  <kronostar.st4@gmail.com>
-
-    * All: all initial files and scripts added
+2012-06-03  Steve Martin  <kronostar.st4@gmail.com>
+	* classes/DB.class.php: added
 	
+2012-05-27  Steve Martin  <kronostar.st4@gmail.com>
+	* All: all initial files and scripts added
