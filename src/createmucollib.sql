@@ -9,11 +9,11 @@ CREATE DATABASE IF NOT EXISTS `mucollib`;
 -- Table `mucollib`.`Artist`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Artist` (
-  `idArtist` INT NOT NULL AUTO_INCREMENT ,
-  `ArtistName` VARCHAR(250) NOT NULL ,
-  `ArtistSort` VARCHAR(250) NOT NULL ,
-  PRIMARY KEY (`idArtist`) ,
-  INDEX `ArtistSort` (`ArtistSort` ASC) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(250) NOT NULL ,
+  `Sort` VARCHAR(250) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `Sort` (`Sort` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -24,9 +24,9 @@ COMMENT = 'The artist table, used by many others';
 -- Table `mucollib`.`Format`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Format` (
-  `idFormat` INT NOT NULL AUTO_INCREMENT ,
-  `FormatName` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`idFormat`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(20) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -37,9 +37,9 @@ COMMENT = 'The Media on which the recording is contained';
 -- Table `mucollib`.`Genre`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Genre` (
-  `idGenre` INT NOT NULL AUTO_INCREMENT ,
-  `GenreName` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idGenre`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -50,9 +50,9 @@ COMMENT = 'The musical style of the recorded work';
 -- Table `mucollib`.`Label`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Label` (
-  `idLabel` INT NOT NULL AUTO_INCREMENT ,
-  `LabelName` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idLabel`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -63,46 +63,46 @@ COMMENT = 'The recording label under which an album is released';
 -- Table `mucollib`.`Album`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Album` (
-  `idAlbum` INT NOT NULL AUTO_INCREMENT ,
-  `AlbumName` VARCHAR(120) NOT NULL ,
-  `AlbumYear` YEAR NOT NULL ,
-  `AlbumCatNo` VARCHAR(20) NULL ,
-  `AlbumOrigYear` YEAR NULL ,
-  `AlbumOrigCatNo` VARCHAR(20) NULL ,
-  `Artist_idArtist` INT NOT NULL ,
-  `Format_idFormat` INT NOT NULL ,
-  `Genre_idGenre` INT NOT NULL ,
-  `Label_idLabel` INT NOT NULL ,
-  `Label_idLabel_Orig` INT NOT NULL ,
-  PRIMARY KEY (`idAlbum`) ,
-  INDEX `fk_Album_Artist` (`Artist_idArtist` ASC) ,
-  INDEX `fk_Album_Format1` (`Format_idFormat` ASC) ,
-  INDEX `fk_Album_Genre1` (`Genre_idGenre` ASC) ,
-  INDEX `fk_Album_Label1` (`Label_idLabel` ASC) ,
-  INDEX `fk_Album_Label2` (`Label_idLabel_Orig` ASC) ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(120) NOT NULL ,
+  `Year` YEAR NOT NULL ,
+  `CatNo` VARCHAR(20) NULL ,
+  `OrigYear` YEAR NULL ,
+  `OrigCatNo` VARCHAR(20) NULL ,
+  `Artist_id` INT NOT NULL ,
+  `Format_id` INT NOT NULL ,
+  `Genre_id` INT NOT NULL ,
+  `Label_id` INT NOT NULL ,
+  `Label_id_Orig` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Album_Artist` (`Artist_id` ASC) ,
+  INDEX `fk_Album_Format` (`Format_id` ASC) ,
+  INDEX `fk_Album_Genre` (`Genre_id` ASC) ,
+  INDEX `fk_Album_Label1` (`Label_id` ASC) ,
+  INDEX `fk_Album_Label2` (`Label_id_Orig` ASC) ,
   CONSTRAINT `fk_Album_Artist`
-    FOREIGN KEY (`Artist_idArtist` )
-    REFERENCES `mucollib`.`Artist` (`idArtist` )
+    FOREIGN KEY (`Artist_id` )
+    REFERENCES `mucollib`.`Artist` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Album_Format1`
-    FOREIGN KEY (`Format_idFormat` )
-    REFERENCES `mucollib`.`Format` (`idFormat` )
+  CONSTRAINT `fk_Album_Format`
+    FOREIGN KEY (`Format_id` )
+    REFERENCES `mucollib`.`Format` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Album_Genre1`
-    FOREIGN KEY (`Genre_idGenre` )
-    REFERENCES `mucollib`.`Genre` (`idGenre` )
+  CONSTRAINT `fk_Album_Genre`
+    FOREIGN KEY (`Genre_id` )
+    REFERENCES `mucollib`.`Genre` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Album_Label1`
-    FOREIGN KEY (`Label_idLabel` )
-    REFERENCES `mucollib`.`Label` (`idLabel` )
+    FOREIGN KEY (`Label_id` )
+    REFERENCES `mucollib`.`Label` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Album_Label2`
-    FOREIGN KEY (`Label_idLabel_Orig` )
-    REFERENCES `mucollib`.`Label` (`idLabel` )
+    FOREIGN KEY (`Label_id_Orig` )
+    REFERENCES `mucollib`.`Label` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -115,9 +115,9 @@ COMMENT = 'A collection of recorded works by an artist';
 -- Table `mucollib`.`Instrument`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Instrument` (
-  `idInstrument` INT NOT NULL AUTO_INCREMENT ,
-  `InstrumentName` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`idInstrument`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(20) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -128,20 +128,20 @@ COMMENT = 'An instrument identifier';
 -- Table `mucollib`.`Musician`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Musician` (
-  `idMusician` INT NOT NULL AUTO_INCREMENT ,
-  `Artist_idArtist` INT NOT NULL ,
-  `Instrument_idInstrument` INT NOT NULL ,
-  PRIMARY KEY (`idMusician`) ,
-  INDEX `fk_Musician_Artist1` (`Artist_idArtist` ASC) ,
-  INDEX `fk_Musician_Instrument1` (`Instrument_idInstrument` ASC) ,
-  CONSTRAINT `fk_Musician_Artist1`
-    FOREIGN KEY (`Artist_idArtist` )
-    REFERENCES `mucollib`.`Artist` (`idArtist` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Artist_id` INT NOT NULL ,
+  `Instrument_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Musician_Artist` (`Artist_id` ASC) ,
+  INDEX `fk_Musician_Instrument` (`Instrument_id` ASC) ,
+  CONSTRAINT `fk_Musician_Artist`
+    FOREIGN KEY (`Artist_id` )
+    REFERENCES `mucollib`.`Artist` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Musician_Instrument1`
-    FOREIGN KEY (`Instrument_idInstrument` )
-    REFERENCES `mucollib`.`Instrument` (`idInstrument` )
+  CONSTRAINT `fk_Musician_Instrument`
+    FOREIGN KEY (`Instrument_id` )
+    REFERENCES `mucollib`.`Instrument` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -154,9 +154,9 @@ COMMENT = 'Links an artist to an instrument';
 -- Table `mucollib`.`MusicianStatus`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`MusicianStatus` (
-  `idMusicianStatus` INT NOT NULL AUTO_INCREMENT ,
-  `MusicianStatusName` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`idMusicianStatus`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(20) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -167,27 +167,27 @@ COMMENT = 'The status a musician occupies on a recording';
 -- Table `mucollib`.`AlbumMusician`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`AlbumMusician` (
-  `idAlbumMusician` INT NOT NULL AUTO_INCREMENT ,
-  `Musician_idMusician` INT NOT NULL ,
-  `Album_idAlbum` INT NOT NULL ,
-  `MusicianStatus_idMusicianStatus` INT NOT NULL ,
-  PRIMARY KEY (`idAlbumMusician`) ,
-  INDEX `fk_AlbumMusician_Musician1` (`Musician_idMusician` ASC) ,
-  INDEX `fk_AlbumMusician_Album1` (`Album_idAlbum` ASC) ,
-  INDEX `fk_AlbumMusician_MusicianStatus1` (`MusicianStatus_idMusicianStatus` ASC) ,
-  CONSTRAINT `fk_AlbumMusician_Musician1`
-    FOREIGN KEY (`Musician_idMusician` )
-    REFERENCES `mucollib`.`Musician` (`idMusician` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Musician_id` INT NOT NULL ,
+  `Album_id` INT NOT NULL ,
+  `MusicianStatus_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_AlbumMusician_Musician` (`Musician_id` ASC) ,
+  INDEX `fk_AlbumMusician_Album` (`Album_id` ASC) ,
+  INDEX `fk_AlbumMusician_MusicianStatus` (`MusicianStatus_id` ASC) ,
+  CONSTRAINT `fk_AlbumMusician_Musician`
+    FOREIGN KEY (`Musician_id` )
+    REFERENCES `mucollib`.`Musician` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AlbumMusician_Album1`
-    FOREIGN KEY (`Album_idAlbum` )
-    REFERENCES `mucollib`.`Album` (`idAlbum` )
+  CONSTRAINT `fk_AlbumMusician_Album`
+    FOREIGN KEY (`Album_id` )
+    REFERENCES `mucollib`.`Album` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AlbumMusician_MusicianStatus1`
-    FOREIGN KEY (`MusicianStatus_idMusicianStatus` )
-    REFERENCES `mucollib`.`MusicianStatus` (`idMusicianStatus` )
+  CONSTRAINT `fk_AlbumMusician_MusicianStatus`
+    FOREIGN KEY (`MusicianStatus_id` )
+    REFERENCES `mucollib`.`MusicianStatus` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -200,16 +200,16 @@ COMMENT = 'Links a musician to an album';
 -- Table `mucollib`.`Song`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`Song` (
-  `idSong` INT NOT NULL AUTO_INCREMENT ,
-  `SongName` VARCHAR(120) NOT NULL ,
-  `SongLength` TIME NULL ,
-  `SongNumber` INT NOT NULL ,
-  `Album_idAlbum` INT NOT NULL ,
-  PRIMARY KEY (`idSong`) ,
-  INDEX `fk_Song_Album1` (`Album_idAlbum` ASC) ,
-  CONSTRAINT `fk_Song_Album1`
-    FOREIGN KEY (`Album_idAlbum` )
-    REFERENCES `mucollib`.`Album` (`idAlbum` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(120) NOT NULL ,
+  `Length` TIME NULL ,
+  `Number` INT NOT NULL ,
+  `Album_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Song_Album` (`Album_id` ASC) ,
+  CONSTRAINT `fk_Song_Album`
+    FOREIGN KEY (`Album_id` )
+    REFERENCES `mucollib`.`Album` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -222,20 +222,20 @@ COMMENT = 'Identifies a song, linking it to a particular album.';
 -- Table `mucollib`.`SongComposer`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`SongComposer` (
-  `idSongComposer` INT NOT NULL AUTO_INCREMENT ,
-  `Artist_idArtist` INT NOT NULL ,
-  `Song_idSong` INT NOT NULL ,
-  PRIMARY KEY (`idSongComposer`) ,
-  INDEX `fk_SongComposer_Artist1` (`Artist_idArtist` ASC) ,
-  INDEX `fk_SongComposer_Song1` (`Song_idSong` ASC) ,
-  CONSTRAINT `fk_SongComposer_Artist1`
-    FOREIGN KEY (`Artist_idArtist` )
-    REFERENCES `mucollib`.`Artist` (`idArtist` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Artist_id` INT NOT NULL ,
+  `Song_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_SongComposer_Artist` (`Artist_id` ASC) ,
+  INDEX `fk_SongComposer_Song` (`Song_id` ASC) ,
+  CONSTRAINT `fk_SongComposer_Artist`
+    FOREIGN KEY (`Artist_id` )
+    REFERENCES `mucollib`.`Artist` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SongComposer_Song1`
-    FOREIGN KEY (`Song_idSong` )
-    REFERENCES `mucollib`.`Song` (`idSong` )
+  CONSTRAINT `fk_SongComposer_Song`
+    FOREIGN KEY (`Song_id` )
+    REFERENCES `mucollib`.`Song` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -248,27 +248,27 @@ COMMENT = 'Links an artist to a song as the composer';
 -- Table `mucollib`.`SongMusician`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`SongMusician` (
-  `idSongMusician` INT NOT NULL AUTO_INCREMENT ,
-  `Musician_idMusician` INT NOT NULL ,
-  `Song_idSong` INT NOT NULL ,
-  `MusicianStatus_idMusicianStatus` INT NOT NULL ,
-  PRIMARY KEY (`idSongMusician`) ,
-  INDEX `fk_SongMusician_Musician1` (`Musician_idMusician` ASC) ,
-  INDEX `fk_SongMusician_Song1` (`Song_idSong` ASC) ,
-  INDEX `fk_SongMusician_MusicianStatus1` (`MusicianStatus_idMusicianStatus` ASC) ,
-  CONSTRAINT `fk_SongMusician_Musician1`
-    FOREIGN KEY (`Musician_idMusician` )
-    REFERENCES `mucollib`.`Musician` (`idMusician` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Musician_id` INT NOT NULL ,
+  `Song_id` INT NOT NULL ,
+  `MusicianStatus_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_SongMusician_Musician` (`Musician_id` ASC) ,
+  INDEX `fk_SongMusician_Song` (`Song_id` ASC) ,
+  INDEX `fk_SongMusician_MusicianStatus` (`MusicianStatus_id` ASC) ,
+  CONSTRAINT `fk_SongMusician_Musician`
+    FOREIGN KEY (`Musician_id` )
+    REFERENCES `mucollib`.`Musician` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SongMusician_Song1`
-    FOREIGN KEY (`Song_idSong` )
-    REFERENCES `mucollib`.`Song` (`idSong` )
+  CONSTRAINT `fk_SongMusician_Song`
+    FOREIGN KEY (`Song_id` )
+    REFERENCES `mucollib`.`Song` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_SongMusician_MusicianStatus1`
-    FOREIGN KEY (`MusicianStatus_idMusicianStatus` )
-    REFERENCES `mucollib`.`MusicianStatus` (`idMusicianStatus` )
+  CONSTRAINT `fk_SongMusician_MusicianStatus`
+    FOREIGN KEY (`MusicianStatus_id` )
+    REFERENCES `mucollib`.`MusicianStatus` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -281,15 +281,15 @@ COMMENT = 'Links a musician to a song recording ';
 -- Table `mucollib`.`SongSection`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mucollib`.`SongSection` (
-  `idSongSection` INT NOT NULL AUTO_INCREMENT ,
-  `SongSectionRef` VARCHAR(10) NOT NULL ,
-  `SongSectionName` VARCHAR(120) NOT NULL ,
-  `Song_idSong` INT NOT NULL ,
-  PRIMARY KEY (`idSongSection`) ,
-  INDEX `fk_SongSection_Song1` (`Song_idSong` ASC) ,
-  CONSTRAINT `fk_SongSection_Song1`
-    FOREIGN KEY (`Song_idSong` )
-    REFERENCES `mucollib`.`Song` (`idSong` )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Ref` VARCHAR(10) NOT NULL ,
+  `Name` VARCHAR(120) NOT NULL ,
+  `Song_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_SongSection_Song` (`Song_id` ASC) ,
+  CONSTRAINT `fk_SongSection_Song`
+    FOREIGN KEY (`Song_id` )
+    REFERENCES `mucollib`.`Song` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
