@@ -53,6 +53,7 @@ return array(
 		),
 
 		'mysql' => array(
+			'engine'	=> 'innodb',
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'mucollib',
