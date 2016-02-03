@@ -19,8 +19,8 @@ class CreateAlbummusiciansTable extends Migration {
 			$table->unsignedInteger('musician_id');
 			$table->unsignedInteger('album_id');
 			$table->unsignedInteger('musicianstatus_id');
-			$table->foreign('musician_id')->references('id')->on('musicians');
-			$table->foreign('album_id')->references('id')->on('albums');
+			$table->foreign('musician_id')->references('id')->on('musicians')->onDelete('cascade');
+			$table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
 			$table->foreign('musicianstatus_id')->references('id')->on('musicianstatus');
 		});
 	}

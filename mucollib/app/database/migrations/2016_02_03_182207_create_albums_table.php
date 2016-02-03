@@ -26,8 +26,8 @@ class CreateAlbumsTable extends Migration {
 			$table->unsignedInteger('genre_id')->references('id')->on('genres');
 			$table->unsignedInteger('label_id')->references('id')->on('labels');
 			$table->unsignedInteger('origlabel_id')->references('id')->on('labels');
-			$table->foreign('artist_id')->references('id')->on('artists');
-			$table->foreign('format_id')->references('id')->on('formats');
+			$table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
+			$table->foreign('format_id')->references('id')->on('formats')->onDelete('cascade');
 			$table->foreign('genre_id')->references('id')->on('genres');
 			$table->foreign('label_id')->references('id')->on('labels');
 			$table->foreign('origlabel_id')->references('id')->on('labels');

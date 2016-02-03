@@ -18,8 +18,8 @@ class CreateSongcomposersTable extends Migration {
 			$table->increments('id');
 			$table->unsignedInteger('artist_id');
 			$table->unsignedInteger('song_id');
-			$table->foreign('artist_id')->references('id')->on('artists');
-			$table->foreign('song_id')->references('id')->on('songs');
+			$table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
+			$table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
 		});
 	}
 

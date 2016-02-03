@@ -20,7 +20,7 @@ class CreateSongsTable extends Migration {
 			$table->time('length')->nullable();
 			$table->unsignedInteger('number');
 			$table->unsignedinteger('album_id');
-			$table->foreign('album_id')->references('id')->on('albums');
+			$table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
 		});
 	}
 
