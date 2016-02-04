@@ -42,9 +42,33 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>{{ link_to("artist", "All Artists"); }}</li>
+            <li>{{ link_to("artist?begins=A", "A" ); }}</li>
+            <li>{{ link_to("artist?begins=B", "B" ); }}</li>
+            <li>{{ link_to("artist?begins=C", "C" ); }}</li>
+            <li>{{ link_to("artist?begins=D", "D" ); }}</li>
+            <li>{{ link_to("artist?begins=E", "E" ); }}</li>
+            <li>{{ link_to("artist?begins=F", "F" ); }}</li>
+            <li>{{ link_to("artist?begins=G", "G" ); }}</li>
+            <li>{{ link_to("artist?begins=H", "H" ); }}</li>
+            <li>{{ link_to("artist?begins=I", "I" ); }}</li>
+            <li>{{ link_to("artist?begins=J", "J" ); }}</li>
+            <li>{{ link_to("artist?begins=K", "K" ); }}</li>
+            <li>{{ link_to("artist?begins=L", "L" ); }}</li>
+            <li>{{ link_to("artist?begins=M", "M" ); }}</li>
+            <li>{{ link_to("artist?begins=N", "N" ); }}</li>
+            <li>{{ link_to("artist?begins=O", "O" ); }}</li>
+            <li>{{ link_to("artist?begins=P", "P" ); }}</li>
+            <li>{{ link_to("artist?begins=Q", "Q" ); }}</li>
+            <li>{{ link_to("artist?begins=R", "R" ); }}</li>
+            <li>{{ link_to("artist?begins=S", "S" ); }}</li>
+            <li>{{ link_to("artist?begins=T", "T" ); }}</li>
+            <li>{{ link_to("artist?begins=U", "U" ); }}</li>
+            <li>{{ link_to("artist?begins=V", "V" ); }}</li>
+            <li>{{ link_to("artist?begins=W", "W" ); }}</li>
+            <li>{{ link_to("artist?begins=X", "X" ); }}</li>
+            <li>{{ link_to("artist?begins=Y", "Y" ); }}</li>
+            <li>{{ link_to("artist?begins=Z", "Z" ); }}</li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

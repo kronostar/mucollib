@@ -10,6 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::resource('artist', 'ArtistController');
+Route::resource('album', 'AlbumController');
+Route::resource('format', 'FormatController');
+Route::resource('genre', 'GenreController');
+Route::resource('label', 'LabelController');
 
 Route::get('/', function()
 {
