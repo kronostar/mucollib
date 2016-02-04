@@ -1,5 +1,5 @@
 <?php
-class Format extends Eloquent {
+class Formats extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
 			'name' 
@@ -14,12 +14,12 @@ class Format extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Format';
+	protected $table = 'formats';
 	
 	/**
 	 * Get the albums associated with the format
 	 */
 	public function Album() {
-		return $this->hasMany ( 'Album' );
+		return $this->hasMany ( 'albums' );
 	}
 }

@@ -1,8 +1,8 @@
 <?php
-class AlbumController extends \BaseController {
-	protected $album;
-	public function __construct(Album $album) {
-		$this->album = $album;
+class AlbumsController extends \BaseController {
+	protected $albums;
+	public function __construct(Albums $albums) {
+		$this->albums = $albums;
 	}
 	
 	/**
@@ -11,8 +11,8 @@ class AlbumController extends \BaseController {
 	 * @return Response
 	 */
 	public function index() {
-		$albums = $this->album->all ();
-		return View::make ( 'album.index' )->with ( 'albums', $albums );
+		$albums = $this->albums->all ();
+		return View::make ( 'albums.index' )->with ( 'albums', $albums );
 	}
 	
 	/**
@@ -21,11 +21,11 @@ class AlbumController extends \BaseController {
 	 * @return Response
 	 */
 	public function create() {
-		$artist = Artist::lists ( 'name', 'id' );
-		$format = Format::lists ( 'name', 'id' );
-		$genre = Genre::lists ( 'name', 'id' );
-		$label = Label::lists ( 'name', 'id' );
-		return View::make ( 'album.create' )->with ( 'artist', $artist )->with ( 'format', $format )->with ( 'genre', $genre )->with ( 'label', $label );
+		$artists = Artists::lists ( 'name', 'id' );
+		$formats = Formats::lists ( 'name', 'id' );
+		$genres = Genres::lists ( 'name', 'id' );
+		$labels = Labels::lists ( 'name', 'id' );
+		return View::make ( 'albums.create' )->with ( 'artists', $artists )->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
 	}
 	
 	/**

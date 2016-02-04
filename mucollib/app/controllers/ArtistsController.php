@@ -1,8 +1,8 @@
 <?php
-class ArtistController extends \BaseController {
-	protected $artist;
-	public function __construct(Artist $artist) {
-		$this->artist = $artist;
+class ArtistsController extends \BaseController {
+	protected $artists;
+	public function __construct(Artists $artists) {
+		$this->artists = $artists;
 	}
 	
 	/**
@@ -13,15 +13,15 @@ class ArtistController extends \BaseController {
 	public function index() {
 		$id = Input::get ( "begins" );
 		$id = $id . '%';
-		$artists = $this->artist->orderBy ( 'Sort' )->where ( 'Sort', 'LIKE', $id )->get ();
+		$artists = $this->artists->orderBy ( 'sort' )->where ( 'sort', 'LIKE', $id )->get ();
 		if ($artists->count ()) {
 			// select album from albums where artist in artists
-			$query = $this->artist->orderBy ( 'Sort' )->where ( 'Sort', 'LIKE', $id )->lists ( 'id' );
-			$albums = Album::whereIn ( 'Artist_id', $query )->get ();
+			$query = $this->artists->orderBy ( 'sort' )->where ( 'sort', 'LIKE', $id )->lists ( 'id' );
+			$albums = Albums::whereIn ( 'artist_id', $query )->get ();
 		} else {
-			$albums = Album::all ();
+			$albums = Albums::all ();
 		}
-		return View::make ( 'artist.index' )->with ( 'artists', $artists )->with ( 'albums', $albums );
+		return View::make ( 'artists.index' )->with ( 'artists', $artists )->with ( 'albums', $albums );
 	}
 	
 	/**
@@ -56,9 +56,9 @@ class ArtistController extends \BaseController {
 	 * @return Response
 	 */
 	public function show($id) {
-		$artist = $this->artist->find ( $id );
-		$albums = Album::where ( 'Artist_id', '=', $id )->get ();
-		return View::make ( 'artist.show' )->with ( 'artist', $artist )->with ( 'albums', $albums );
+		$artist = $this->artists->find ( $id );
+		$albums = albums::where ( 'artist_id', '=', $id )->get ();
+		return View::make ( 'artists.show' )->with ( 'artist', $artist )->with ( 'albums', $albums );
 	}
 	
 	/**

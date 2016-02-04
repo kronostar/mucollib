@@ -1,5 +1,5 @@
 <?php
-class Label extends Eloquent {
+class Labels extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
 			'name' 
@@ -14,12 +14,12 @@ class Label extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Label';
+	protected $table = 'labels';
 	
 	/**
 	 * Get the albums associated with the label
 	 */
 	public function Album() {
-		return $this->hasMany ( 'Album' );
+		return $this->hasMany ( 'albums' );
 	}
 }

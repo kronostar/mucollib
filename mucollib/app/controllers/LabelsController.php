@@ -1,6 +1,6 @@
 <?php
 
-class FormatController extends \BaseController {
+class LabelsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.

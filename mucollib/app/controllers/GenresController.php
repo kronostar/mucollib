@@ -1,6 +1,6 @@
 <?php
 
-class GenreController extends \BaseController {
+class GenresController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.

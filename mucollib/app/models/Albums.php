@@ -1,5 +1,5 @@
 <?php
-class Album extends Eloquent {
+class Albums extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
 			'name',
@@ -19,34 +19,34 @@ class Album extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Album';
+	protected $table = 'albums';
 	
 	/**
 	 * Get the artist associated with the album
 	 */
 	public function Artist() {
-		return $this->belongsTo ( 'Artist' );
+		return $this->belongsTo ( 'artists' );
 	}
 	
 	/**
 	 * Get the media format of the Album
 	 */
 	public function Format() {
-		return $this->belongsTo ( 'Format' );
+		return $this->belongsTo ( 'formats' );
 	}
 	
 	/**
 	 * Get the genre of the Album
 	 */
 	public function Genre() {
-		return $this->belongsTo ( 'Genre' );
+		return $this->belongsTo ( 'genres' );
 	}
 	
 	/**
 	 * Get the label of the Album
 	 */
 	public function Label() {
-		return $this->belongsTo ( 'Label' );
+		return $this->belongsTo ( 'labels' );
 	}
 	public function isValid() {
 		$validation = Validator::make ( $this->attributes, static::$rules );

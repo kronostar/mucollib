@@ -1,5 +1,5 @@
 <?php
-class Genre extends Eloquent {
+class Genres extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
 			'name' 
@@ -14,12 +14,12 @@ class Genre extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Genre';
+	protected $table = 'genres';
 	
 	/**
 	 * Get the albums associated with the format
 	 */
 	public function Album() {
-		return $this->hasMany ( 'Album' );
+		return $this->hasMany ( 'albums' );
 	}
 }

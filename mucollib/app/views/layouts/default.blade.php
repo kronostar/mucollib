@@ -28,9 +28,8 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+    <div class="container">
+	  <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -38,41 +37,41 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MuColLib</a>
+          <a class="navbar-brand" href="{{ URL::asset('') }}">MuColLib</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li>{{ link_to("artist", "All Artists"); }}</li>
-            <li>{{ link_to("artist?begins=A", "A" ); }}</li>
-            <li>{{ link_to("artist?begins=B", "B" ); }}</li>
-            <li>{{ link_to("artist?begins=C", "C" ); }}</li>
-            <li>{{ link_to("artist?begins=D", "D" ); }}</li>
-            <li>{{ link_to("artist?begins=E", "E" ); }}</li>
-            <li>{{ link_to("artist?begins=F", "F" ); }}</li>
-            <li>{{ link_to("artist?begins=G", "G" ); }}</li>
-            <li>{{ link_to("artist?begins=H", "H" ); }}</li>
-            <li>{{ link_to("artist?begins=I", "I" ); }}</li>
-            <li>{{ link_to("artist?begins=J", "J" ); }}</li>
-            <li>{{ link_to("artist?begins=K", "K" ); }}</li>
-            <li>{{ link_to("artist?begins=L", "L" ); }}</li>
-            <li>{{ link_to("artist?begins=M", "M" ); }}</li>
-            <li>{{ link_to("artist?begins=N", "N" ); }}</li>
-            <li>{{ link_to("artist?begins=O", "O" ); }}</li>
-            <li>{{ link_to("artist?begins=P", "P" ); }}</li>
-            <li>{{ link_to("artist?begins=Q", "Q" ); }}</li>
-            <li>{{ link_to("artist?begins=R", "R" ); }}</li>
-            <li>{{ link_to("artist?begins=S", "S" ); }}</li>
-            <li>{{ link_to("artist?begins=T", "T" ); }}</li>
-            <li>{{ link_to("artist?begins=U", "U" ); }}</li>
-            <li>{{ link_to("artist?begins=V", "V" ); }}</li>
-            <li>{{ link_to("artist?begins=W", "W" ); }}</li>
-            <li>{{ link_to("artist?begins=X", "X" ); }}</li>
-            <li>{{ link_to("artist?begins=Y", "Y" ); }}</li>
-            <li>{{ link_to("artist?begins=Z", "Z" ); }}</li>
+            <li>{{ link_to("artists", "All Artists"); }}</li>
+            <li>{{ link_to("artists?begins=A", "A" ); }}</li>
+            <li>{{ link_to("artists?begins=B", "B" ); }}</li>
+            <li>{{ link_to("artists?begins=C", "C" ); }}</li>
+            <li>{{ link_to("artists?begins=D", "D" ); }}</li>
+            <li>{{ link_to("artists?begins=E", "E" ); }}</li>
+            <li>{{ link_to("artists?begins=F", "F" ); }}</li>
+            <li>{{ link_to("artists?begins=G", "G" ); }}</li>
+            <li>{{ link_to("artists?begins=H", "H" ); }}</li>
+            <li>{{ link_to("artists?begins=I", "I" ); }}</li>
+            <li>{{ link_to("artists?begins=J", "J" ); }}</li>
+            <li>{{ link_to("artists?begins=K", "K" ); }}</li>
+            <li>{{ link_to("artists?begins=L", "L" ); }}</li>
+            <li>{{ link_to("artists?begins=M", "M" ); }}</li>
+            <li>{{ link_to("artists?begins=N", "N" ); }}</li>
+            <li>{{ link_to("artists?begins=O", "O" ); }}</li>
+            <li>{{ link_to("artists?begins=P", "P" ); }}</li>
+            <li>{{ link_to("artists?begins=Q", "Q" ); }}</li>
+            <li>{{ link_to("artists?begins=R", "R" ); }}</li>
+            <li>{{ link_to("artists?begins=S", "S" ); }}</li>
+            <li>{{ link_to("artists?begins=T", "T" ); }}</li>
+            <li>{{ link_to("artists?begins=U", "U" ); }}</li>
+            <li>{{ link_to("artists?begins=V", "V" ); }}</li>
+            <li>{{ link_to("artists?begins=W", "W" ); }}</li>
+            <li>{{ link_to("artists?begins=X", "X" ); }}</li>
+            <li>{{ link_to("artists?begins=Y", "Y" ); }}</li>
+            <li>{{ link_to("artists?begins=Z", "Z" ); }}</li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
 

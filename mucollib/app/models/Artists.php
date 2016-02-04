@@ -1,5 +1,5 @@
 <?php
-class Artist extends Eloquent {
+class Artists extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
 			'name',
@@ -16,13 +16,13 @@ class Artist extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Artist';
+	protected $table = 'artists';
 	
 	/**
 	 * Get the albums associated with the artist
 	 */
 	public function Albums() {
-		return $this->hasMany ( 'Album' );
+		return $this->hasMany ( 'albums' );
 	}
 	public function isValid() {
 		$validation = Validator::make ( $this->attributes, static::$rules );
