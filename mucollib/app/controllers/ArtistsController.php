@@ -30,7 +30,7 @@ class ArtistsController extends \BaseController {
 	 * @return Response
 	 */
 	public function create() {
-		return View::make ( 'artist.create' );
+		return View::make ( 'artists.create' );
 	}
 	
 	/**
@@ -40,13 +40,13 @@ class ArtistsController extends \BaseController {
 	 */
 	public function store() {
 		$input = Input::all ();
-		if (! $this->artist->fill ( $input )->isValid ()) {
-			return Redirect::route ( 'artist.create' )->withInput ()->withErrors ( $this->artist->messages );
+		if (! $this->artists->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'artists.create' )->withInput ()->withErrors ( $this->artist->messages );
 		}
 		
-		$this->artist->save ();
+		$this->artists->save ();
 		
-		return Redirect::route ( 'artist.index' );
+		return Redirect::route ( 'artists.index' );
 	}
 	
 	/**
@@ -57,7 +57,7 @@ class ArtistsController extends \BaseController {
 	 */
 	public function show($id) {
 		$artist = $this->artists->find ( $id );
-		$albums = albums::where ( 'artist_id', '=', $id )->get ();
+		$albums = Albums::where ( 'artist_id', '=', $id )->get ();
 		return View::make ( 'artists.show' )->with ( 'artist', $artist )->with ( 'albums', $albums );
 	}
 	
@@ -68,8 +68,8 @@ class ArtistsController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id) {
-		$artist = $this->artist->find ( $id );
-		return View::make ( 'artist.edit' )->with ( 'artist', $artist );
+		$artist = $this->artists->find ( $id );
+		return View::make ( 'artists.edit' )->with ( 'artist', $artist );
 	}
 	
 	/**
@@ -83,11 +83,11 @@ class ArtistsController extends \BaseController {
 				'_method',
 				'_token' 
 		) );
-		if (! $this->artist->fill ( $input )->isValid ()) {
-			return Redirect::route ( 'artist.edit', $id )->withInput ()->withErrors ( $this->artist->messages );
+		if (! $this->artists->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'artists.edit', $id )->withInput ()->withErrors ( $this->artist->messages );
 		}
-		$artist = $this->artist->find ( $id )->update ( $input );
-		return Redirect::route ( 'artist.index' );
+		$artist = $this->artists->find ( $id )->update ( $input );
+		return Redirect::route ( 'artists.index' );
 	}
 	
 	/**

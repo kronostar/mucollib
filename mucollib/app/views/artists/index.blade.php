@@ -1,42 +1,46 @@
 @extends('layouts.default') 
+<!-- mucollib/app/views/artists/index.blade.php -->
 
 @section('content')
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
+			<form action='artists/create'>
+				{{ Form::submit('Add Artist',array('class' => 'btn btn-lg btn-primary btn-block')) }}
+			</form>
 			@if ($artists->count())
-				<div class=artistbar>
-					@foreach ($artists as $artist)
-						<div class=artistrow>
-							<div class=artistcell>
-								{{ link_to("artists/{$artist->id}",$artist->Name) }}
-							</div>
-						</div>
-		      		@endforeach
-		    	</div>
+				@foreach ($artists as $artist)
+					<div class="row">
+						{{ link_to("artists/{$artist->id}",$artist->name) }}
+					</div>
+		      	@endforeach
 		  	@else
 		  		<p class="lead">Unfortunately there are no matching artists, perhaps you should create some?</p>
 		  	@endif
 		</div>
 		
 		<div class="col-xs-12 col-sm-6">
+			<form action='albums/create'>
+				{{ Form::submit('Add Album',array('class' => 'btn btn-lg btn-primary btn-block')) }}
+			</form>
 			@if ($albums->count())
-		    	<div class=albumbar>
 		      		<?php $count = 0; ?>
 		      		@foreach ($albums as $album)
 						@if ($count == 0)
-							<div class=albumrow>
+							<div class="row">
 						@endif
-			  					<div class=albumcell>
-			    					{{ $album->Name }}
-			  					</div>
+	    					<div class="col-xs-12 col-sm-6">
+	    						{{ $album->name }}
+	    					</div>
 						@if (++$count == 3)
 							</div>
 						@endif
 		      			<?php if ($count == 3) $count = 0; ?>
 		      		@endforeach
-		    	</div>
+					@if ($count != 0)
+						</div>
+					@endif
 		  	@else
-			    <p class="lead">Unfortunately there are no matching albums, perhaps you should create some?</p>
+		    	<p class="lead">Unfortunately there are no matching albums, perhaps you should create some?</p>
 		  	@endif
 		</div>
 	</div>

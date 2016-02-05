@@ -1,26 +1,17 @@
 @extends('layouts.default')
+<!-- mucollib/app/views/artists/create.blade.php -->
 
 @section('content')
-  <h1>Create New Artist</h1>
-  <br>
 
-  {{ Form::open(array('route' => 'artist.store')) }}
-    
-    <div>
-      {{ Form::label('name', 'Display Name: ') }}
-      {{ Form::text('name') }}
-      {{ $errors->first('name') }}
-    </div>
-    
-    <div>
-      {{ Form::label('sort', 'Sort Name: ') }}
-      {{ Form::text('sort') }}
-      {{ $errors->first('sort') }}
-    </div>
-    
-    <div>
-      {{ Form::submit('Create') }}
-    </div>
+  {{ Form::open(array('route' => 'artists.store', 'class' => 'form-artist')) }}
+	<h1>Add New Artist</h1>
+	{{ Form::label('name', '', array('class' => 'sr-only')) }}
+    {{ Form::text('name', 'Display Name', array('class' => 'form-control')) }}
+    {{ $errors->first('name') }}
+    {{ Form::label('sort', '', array('class' => 'sr-only')) }}
+    {{ Form::text('sort', 'Sort Name', array('class' => 'form-control')) }}
+    {{ $errors->first('sort') }}
+    {{ Form::submit('Add',array('class' => 'btn btn-lg btn-primary btn-block')) }}
   {{ Form::close() }}
 
 @stop

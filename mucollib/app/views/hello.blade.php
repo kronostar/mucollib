@@ -1,4 +1,6 @@
 @extends('layouts.default')
+<!-- mucollib/app/views/hello.blade.php -->
+<!-- Landing page -->
 
 @section('content')
   <div class="welcome">
