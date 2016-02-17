@@ -1,7 +1,11 @@
 <?php
 
 class LabelsController extends \BaseController {
-
+	protected $labels;
+	public function __construct(Labels $labels) {
+		$this->labels = $labels;
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +24,7 @@ class LabelsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make ( 'labels.create' );
 	}
 
 
@@ -31,7 +35,14 @@ class LabelsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all ();
+		if (! $this->labels->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'labels.create' )->withInput ()->withErrors ( $this->labels->messages );
+		}
+		
+		$this->labels->save ();
+		
+		return Redirect::route ( 'albums.create' );
 	}
 
 

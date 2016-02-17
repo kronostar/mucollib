@@ -2,17 +2,26 @@
 class Albums extends Eloquent {
 	public $timestamps = false;
 	protected $fillable = array (
+			'artist_id',
 			'name',
 			'year',
-			'catno',
 			'origyear',
-			'origcatno' 
+			'catno',
+			'origcatno',
+			'format_id',
+			'genre_id',
+			'label_id',
+			'origlabel_id'
 	);
 	public static $rules = array (
-			'name' => 'required',
-			'Artist_id' => 'required',
-			'Format_id' => 'required' 
+			'artist_id' => 'required|not_in:0',
+			'name' => 'required|not_in:Title',
+			'format_id' => 'required|not_in:0',
+			'genre_id' => 'required|not_in:0',
+			'label_id' => 'required|not_in:0',
+			'origlabel_id' => 'required|not_in:0'
 	);
+	public $messages;
 	
 	/**
 	 * The database table used by the model.

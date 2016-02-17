@@ -4,7 +4,7 @@
 @section('content')
 
   {{ Form::open(array('route' => 'artists.store', 'class' => 'form-artist')) }}
-	<h1>Add New Artist</h1>
+	<h1>New Artist</h1>
 	{{ Form::label('name', '', array('class' => 'sr-only')) }}
     {{ Form::text('name', 'Display Name', array('class' => 'form-control')) }}
     {{ $errors->first('name') }}

@@ -12,7 +12,7 @@
   		</div>
 
 		<div class="col-xs-12 col-sm-6">
-			<form action='albums/create'>
+			<form action='/albums/create'>
 				{{ Form::submit('Add Album',array('class' => 'btn btn-lg btn-primary btn-block')) }}
 			</form>
   			@if ($albums->count())

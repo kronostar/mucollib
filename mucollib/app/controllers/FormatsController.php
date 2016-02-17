@@ -1,7 +1,11 @@
 <?php
 
 class FormatsController extends \BaseController {
-
+	protected $formats;
+	public function __construct(Formats $formats) {
+		$this->formats = $formats;
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +24,7 @@ class FormatsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make ( 'formats.create' );
 	}
 
 
@@ -31,7 +35,14 @@ class FormatsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all ();
+		if (! $this->formats->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'formats.create' )->withInput ()->withErrors ( $this->formats->messages );
+		}
+		
+		$this->formats->save ();
+		
+		return Redirect::route ( 'albums.create' );
 	}
 
 

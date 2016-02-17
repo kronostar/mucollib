@@ -6,8 +6,8 @@ class Artists extends Eloquent {
 			'sort' 
 	);
 	public static $rules = array (
-			'name' => 'required',
-			'sort' => 'required' 
+			'name' => 'required|not_in:Display Name',
+			'sort' => 'required|not_in:Sort Name' 
 	);
 	public $messages;
 	

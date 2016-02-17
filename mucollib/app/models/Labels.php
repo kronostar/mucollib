@@ -5,7 +5,7 @@ class Labels extends Eloquent {
 			'name' 
 	);
 	public static $rules = array (
-			'name' => 'required' 
+			'name' => 'required|not_in:Label' 
 	);
 	public $messages;
 	
@@ -21,5 +21,12 @@ class Labels extends Eloquent {
 	 */
 	public function Album() {
 		return $this->hasMany ( 'albums' );
+	}
+	public function isValid() {
+		$validation = Validator::make ( $this->attributes, static::$rules );
+		if ($validation->passes ())
+			return true;
+		$this->messages = $validation;
+		return false;
 	}
 }

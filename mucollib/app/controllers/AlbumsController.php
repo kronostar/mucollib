@@ -21,11 +21,17 @@ class AlbumsController extends \BaseController {
 	 * @return Response
 	 */
 	public function create() {
-		$artists = Artists::lists ( 'name', 'id' );
-		$formats = Formats::lists ( 'name', 'id' );
-		$genres = Genres::lists ( 'name', 'id' );
-		$labels = Labels::lists ( 'name', 'id' );
-		return View::make ( 'albums.create' )->with ( 'artists', $artists )->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
+		$artists = array('Select Artist');
+		$artists += Artists::orderBy ( 'sort' )->lists ( 'name', 'id' );
+		$currentYear = date("Y");
+		$years = range($currentYear, 1900);
+		$formats = array('Select Format');
+		$formats += Formats::lists ( 'name', 'id' );
+		$genres = array('Select Genres');
+		$genres += Genres::lists ( 'name', 'id' );
+		$labels = array('Select Label');
+		$labels += Labels::lists ( 'name', 'id' );
+		return View::make ( 'albums.create' )->with ( 'artists', $artists )->with ('years', $years)->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
 	}
 	
 	/**
@@ -35,6 +41,15 @@ class AlbumsController extends \BaseController {
 	 */
 	public function store() {
 		//
+		$input = Input::all ();
+		//dd($input);
+		if (! $this->albums->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'albums.create' )->withInput ()->withErrors ( $this->albums->messages );
+		}
+		
+		$this->albums->save ();
+		
+		return Redirect::route ( 'artists.index' );
 	}
 	
 	/**

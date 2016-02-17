@@ -41,7 +41,7 @@ class ArtistsController extends \BaseController {
 	public function store() {
 		$input = Input::all ();
 		if (! $this->artists->fill ( $input )->isValid ()) {
-			return Redirect::route ( 'artists.create' )->withInput ()->withErrors ( $this->artist->messages );
+			return Redirect::route ( 'artists.create' )->withInput ()->withErrors ( $this->artists->messages );
 		}
 		
 		$this->artists->save ();
@@ -84,7 +84,7 @@ class ArtistsController extends \BaseController {
 				'_token' 
 		) );
 		if (! $this->artists->fill ( $input )->isValid ()) {
-			return Redirect::route ( 'artists.edit', $id )->withInput ()->withErrors ( $this->artist->messages );
+			return Redirect::route ( 'artists.edit', $id )->withInput ()->withErrors ( $this->artists->messages );
 		}
 		$artist = $this->artists->find ( $id )->update ( $input );
 		return Redirect::route ( 'artists.index' );

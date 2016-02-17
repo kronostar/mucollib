@@ -1,7 +1,11 @@
 <?php
 
 class GenresController extends \BaseController {
-
+	protected $genres;
+	public function __construct(Genres $genres) {
+		$this->genres = $genres;
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +24,7 @@ class GenresController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make ( 'genres.create' );
 	}
 
 
@@ -31,7 +35,14 @@ class GenresController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all ();
+		if (! $this->genres->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'genres.create' )->withInput ()->withErrors ( $this->genres->messages );
+		}
+		
+		$this->genres->save ();
+		
+		return Redirect::route ( 'albums.create' );
 	}
 
 
