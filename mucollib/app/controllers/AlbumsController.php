@@ -59,7 +59,8 @@ class AlbumsController extends \BaseController {
 	 * @return Response
 	 */
 	public function show($id) {
-		//
+		$album = $this->albums->find ( $id );
+		return View::make ( 'albums.show' )->with ( 'album', $album );
 	}
 	
 	/**

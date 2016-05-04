@@ -18,8 +18,8 @@ class CreateSongsectionsTable extends Migration {
 			$table->increments('id');
 			$table->string('ref',10);
 			$table->string('name',120);
-			$table->unsignedInteger('song_id');
-			$table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
+			$table->unsignedInteger('songs_id');
+			$table->foreign('songs_id')->references('id')->on('songs')->onDelete('cascade');
 		});
 	}
 

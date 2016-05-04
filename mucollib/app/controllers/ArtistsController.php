@@ -57,7 +57,10 @@ class ArtistsController extends \BaseController {
 	 */
 	public function show($id) {
 		$artist = $this->artists->find ( $id );
-		$albums = Albums::where ( 'artist_id', '=', $id )->get ();
+/*		$albums = Albums::where ( 'artist_id', '=', $id )->get ();
+ * 
+ */
+		$albums = $artist->Albums()->get();
 		return View::make ( 'artists.show' )->with ( 'artist', $artist )->with ( 'albums', $albums );
 	}
 	

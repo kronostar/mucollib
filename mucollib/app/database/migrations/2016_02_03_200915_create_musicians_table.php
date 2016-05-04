@@ -16,10 +16,10 @@ class CreateMusiciansTable extends Migration {
 		{
 			$table->engine='innodb';
 			$table->increments('id');
-			$table->unsignedInteger('artist_id');
-			$table->unsignedInteger('instrument_id');
-			$table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
-			$table->foreign('instrument_id')->references('id')->on('instruments')->onDelete('cascade');
+			$table->unsignedInteger('artists_id');
+			$table->unsignedInteger('instruments_id');
+			$table->foreign('artists_id')->references('id')->on('artists')->onDelete('cascade');
+			$table->foreign('instruments_id')->references('id')->on('instruments')->onDelete('cascade');
 		});
 	}
 

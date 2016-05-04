@@ -20,7 +20,7 @@ class Genres extends Eloquent {
 	 * Get the albums associated with the format
 	 */
 	public function Album() {
-		return $this->hasMany ( 'albums' );
+		return $this->hasMany ( 'Albums' );
 	}
 	public function isValid() {
 		$validation = Validator::make ( $this->attributes, static::$rules );

@@ -22,7 +22,7 @@ class Artists extends Eloquent {
 	 * Get the albums associated with the artist
 	 */
 	public function Albums() {
-		return $this->hasMany ( 'albums' );
+		return $this->hasMany ( 'Albums' );
 	}
 	public function isValid() {
 		$validation = Validator::make ( $this->attributes, static::$rules );

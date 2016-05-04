@@ -16,10 +16,10 @@ class CreateSongcomposersTable extends Migration {
 		{
 			$table->engine='innodb';
 			$table->increments('id');
-			$table->unsignedInteger('artist_id');
-			$table->unsignedInteger('song_id');
-			$table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
-			$table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
+			$table->unsignedInteger('artists_id');
+			$table->unsignedInteger('songs_id');
+			$table->foreign('artists_id')->references('id')->on('artists')->onDelete('cascade');
+			$table->foreign('songs_id')->references('id')->on('songs')->onDelete('cascade');
 		});
 	}
 

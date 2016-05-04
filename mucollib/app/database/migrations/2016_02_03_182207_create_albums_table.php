@@ -21,16 +21,16 @@ class CreateAlbumsTable extends Migration {
 			$table->string('catno',20)->nullable();
 			$table->string('origyear',4)->nullable();
 			$table->string('origcatno',20)->nullable();
-			$table->unsignedInteger('artist_id')->references('id')->on('artists');
-			$table->unsignedInteger('format_id')->references('id')->on('formats');
-			$table->unsignedInteger('genre_id')->references('id')->on('genres');
-			$table->unsignedInteger('label_id')->references('id')->on('labels');
-			$table->unsignedInteger('origlabel_id')->references('id')->on('labels');
-			$table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
-			$table->foreign('format_id')->references('id')->on('formats')->onDelete('cascade');
-			$table->foreign('genre_id')->references('id')->on('genres');
-			$table->foreign('label_id')->references('id')->on('labels');
-			$table->foreign('origlabel_id')->references('id')->on('labels');
+			$table->unsignedInteger('artists_id')->references('id')->on('artists');
+			$table->unsignedInteger('formats_id')->references('id')->on('formats');
+			$table->unsignedInteger('genres_id')->references('id')->on('genres');
+			$table->unsignedInteger('labels_id')->references('id')->on('labels');
+			$table->unsignedInteger('origlabels_id')->references('id')->on('labels');
+			$table->foreign('artists_id')->references('id')->on('artists')->onDelete('cascade');
+			$table->foreign('formats_id')->references('id')->on('formats')->onDelete('cascade');
+			$table->foreign('genres_id')->references('id')->on('genres');
+			$table->foreign('labels_id')->references('id')->on('labels');
+			$table->foreign('origlabels_id')->references('id')->on('labels');
 		});
 	}
 

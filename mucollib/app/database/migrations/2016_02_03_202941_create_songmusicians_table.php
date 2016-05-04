@@ -16,11 +16,11 @@ class CreateSongmusiciansTable extends Migration {
 		{
 			$table->engine='innodb';
 			$table->increments('id');
-			$table->unsignedInteger('musician_id');
-			$table->unsignedInteger('song_id');
+			$table->unsignedInteger('musicians_id');
+			$table->unsignedInteger('songs_id');
 			$table->unsignedInteger('musicianstatus_id');
-			$table->foreign('musician_id')->references('id')->on('musicians')->onDelete('cascade');
-			$table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
+			$table->foreign('musicians_id')->references('id')->on('musicians')->onDelete('cascade');
+			$table->foreign('songs_id')->references('id')->on('songs')->onDelete('cascade');
 			$table->foreign('musicianstatus_id')->references('id')->on('musicianstatus');
 		});
 	}
