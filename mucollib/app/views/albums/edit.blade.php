@@ -1,5 +1,5 @@
 @extends('layouts.default') 
-<!-- mucollib/app/views/albums/create.blade.php -->
+<!-- mucollib/app/views/albums/edit.blade.php -->
 
 @section('content')
 	<div class='row'>
@@ -19,8 +19,8 @@
 			</form>
 		</div>
 	</div>
-	{{ Form::open(array('route' => 'albums.store','class' => 'form-album')) }}
-		<h1>New Album</h1>
+	{{ Form::model($album, array('route' => array('albums.update', $album->id), 'method' => 'put','class' => 'form-album')) }}
+		<h1>Edit Album</h1>
 		{{ Form::label('artists_id', '', array('class' => 'sr-only')) }} 
 		{{ Form::select('artists_id', $artists, '0', array('class' => 'form-control')) }} 
 		{{ $errors->first('artists_id') }}
@@ -47,6 +47,6 @@
 		{{ Form::label('origlabels_id', 'Original Label:') }} 
 		{{ Form::select('origlabels_id', $labels, '0', array('class' => 'form-control'))	}}
 		{{ $errors->first('origlabels_id') }} 
-		{{ Form::submit('Add',array('class' => 'btn btn-lg btn-primary btn-block')) }}
+    	{{ Form::submit('Update',array('class' => 'btn btn-lg btn-primary btn-block')) }}
 	{{ Form::close() }} 
 @stop

@@ -33,28 +33,28 @@ class Albums extends Eloquent {
 	/**
 	 * Get the artist associated with the album
 	 */
-	public function Artist() {
+	public function Artists() {
 		return $this->belongsTo ( 'Artists' );
 	}
 	
 	/**
 	 * Get the media format of the Album
 	 */
-	public function Format() {
+	public function Formats() {
 		return $this->belongsTo ( 'Formats' );
 	}
 	
 	/**
 	 * Get the genre of the Album
 	 */
-	public function Genre() {
+	public function Genres() {
 		return $this->belongsTo ( 'Genres' );
 	}
 	
 	/**
 	 * Get the label of the Album
 	 */
-	public function Label() {
+	public function Labels() {
 		return $this->belongsTo ( 'Labels' );
 	}
 	public function isValid() {

@@ -17,7 +17,7 @@ class ArtistsController extends \BaseController {
 		if ($artists->count ()) {
 			// select album from albums where artist in artists
 			$query = $this->artists->orderBy ( 'sort' )->where ( 'sort', 'LIKE', $id )->lists ( 'id' );
-			$albums = Albums::whereIn ( 'artist_id', $query )->get ();
+			$albums = Albums::whereIn ( 'artists_id', $query )->get ();
 		} else {
 			$albums = Albums::all ();
 		}
@@ -57,9 +57,6 @@ class ArtistsController extends \BaseController {
 	 */
 	public function show($id) {
 		$artist = $this->artists->find ( $id );
-/*		$albums = Albums::where ( 'artist_id', '=', $id )->get ();
- * 
- */
 		$albums = $artist->Albums()->get();
 		return View::make ( 'artists.show' )->with ( 'artist', $artist )->with ( 'albums', $albums );
 	}

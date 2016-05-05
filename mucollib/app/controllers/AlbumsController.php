@@ -23,15 +23,13 @@ class AlbumsController extends \BaseController {
 	public function create() {
 		$artists = array('Select Artist');
 		$artists += Artists::orderBy ( 'sort' )->lists ( 'name', 'id' );
-		$currentYear = date("Y");
-		$years = range($currentYear, 1900);
 		$formats = array('Select Format');
 		$formats += Formats::lists ( 'name', 'id' );
 		$genres = array('Select Genres');
 		$genres += Genres::lists ( 'name', 'id' );
 		$labels = array('Select Label');
 		$labels += Labels::lists ( 'name', 'id' );
-		return View::make ( 'albums.create' )->with ( 'artists', $artists )->with ('years', $years)->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
+		return View::make ( 'albums.create' )->with ( 'artists', $artists )->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
 	}
 	
 	/**
@@ -70,7 +68,8 @@ class AlbumsController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id) {
-		//
+		$album = $this->albums->find ( $id );
+		return View::make ( 'albums.edit' )->with ( 'album', $album );
 	}
 	
 	/**

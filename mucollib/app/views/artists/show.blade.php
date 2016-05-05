@@ -22,7 +22,7 @@
 							<div class="row">
 						@endif
 						<div class="col-xs-12 col-sm-6">
-	    					{{ $album->name }}
+	    					{{ link_to("albums/{$album->id}",$album->name) }}
 	  					</div>
 						@if(++$count == 3)
 							</div>

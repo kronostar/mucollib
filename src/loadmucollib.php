@@ -49,7 +49,7 @@ if (($infile = fopen ( $file, "r" )) !== FALSE) {
  */
 function getArtistId($conn, $data) {
 	// get artist id
-	$sql = "SELECT id FROM Artist WHERE Name = '" . $data [0] . "'";
+	$sql = "SELECT id FROM Artists WHERE Name = '" . $data [0] . "'";
 	// echo "$sql\n";
 	$result = $conn->query ( $sql );
 	// echo "$result->num_rows\n";
@@ -71,7 +71,7 @@ function getArtistId($conn, $data) {
  */
 function getFormatId($conn, $data) {
 	// get format id
-	$sql = "SELECT id FROM Format WHERE Name = '" . $data [3] . "'";
+	$sql = "SELECT id FROM Formats WHERE Name = '" . $data [3] . "'";
 	// echo "$sql\n";
 	$result = $conn->query ( $sql );
 	// echo "$result->num_rows\n";
@@ -92,7 +92,7 @@ function getFormatId($conn, $data) {
  */
 function addartist($conn, $data) {
 	// add artist record
-	$sql = "INSERT INTO Artist (Name, Sort)
+	$sql = "INSERT INTO Artists (Name, Sort)
 	VALUES ('$data[0]', '$data[1]')";
 	if ($conn->query ( $sql ) === TRUE) {
 		$artistid = $conn->insert_id;
@@ -111,7 +111,7 @@ function addartist($conn, $data) {
  */
 function addformat($conn, $data) {
 	// add format record
-	$sql = "INSERT INTO Format (Name) VALUES ('$data[3]')";
+	$sql = "INSERT INTO Formats (Name) VALUES ('$data[3]')";
 	if ($conn->query ( $sql ) === TRUE) {
 		$formatid = $conn->insert_id;
 	} else {
@@ -133,7 +133,7 @@ function addformat($conn, $data) {
  */
 function addAlbum($conn, $data, $artistid, $formatid) {
 	// add album
-	$sql = "INSERT INTO Album (Name,Artist_id,Format_id)
+	$sql = "INSERT INTO Albums (Name,Artists_id,Formats_id)
 	VALUES ('$data[2]', $artistid, $formatid)";
 	if ($conn->query ( $sql ) !== TRUE) {
 		echo "Error: " . $sql . " " . $conn->error . "\n";
