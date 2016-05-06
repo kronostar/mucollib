@@ -12,21 +12,27 @@
 			</div>
 			<div class="row">
 				<b>Released:</b> {{ $album->year }}
-				<b>First Released</b> {{ $album->origyear }}
 			</div>
 			<div class="row">
 				<b>Catalogue Number:</b> {{ $album->catno}}
 			</div>
 			<div class="row">
+				<b>Label:</b> {{ $album->Labels()->first()->name }}
+			</div>
+			<div class="row">
+				<b>First Released</b> {{ $album->origyear }}
+			</div>
+			<div class="row">
 				<b>Original Catalogue Number:</b> {{ $album->origcatno }}
 			</div>
 			<div class="row">
-				<b>Format:</b> {{ $album->Formats()->first()->name }}
-				<b>Genre:</b> {{ $album->Genres()->first()->name }}
+				<b>Original Label:</b> {{ Labels::where('id', '=', $album->origlabels_id)->first()->name }}
 			</div>
 			<div class="row">
-				<b>Label:</b> {{ $album->Labels()->first()->name }}
-				<b>Original Label:</b> {{ Labels::where('id', '=', $album->origlabels_id)->first()->name }}
+				<b>Format:</b> {{ $album->Formats()->first()->name }}
+			</div>
+			<div class="row">
+				<b>Genre:</b> {{ $album->Genres()->first()->name }}
 			</div>
 		</div>
 	</div>

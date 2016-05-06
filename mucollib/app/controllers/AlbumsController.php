@@ -69,7 +69,15 @@ class AlbumsController extends \BaseController {
 	 */
 	public function edit($id) {
 		$album = $this->albums->find ( $id );
-		return View::make ( 'albums.edit' )->with ( 'album', $album );
+		$artists = array('Select Artist');
+		$artists += Artists::orderBy ( 'sort' )->lists ( 'name', 'id' );
+		$formats = array('Select Format');
+		$formats += Formats::lists ( 'name', 'id' );
+		$genres = array('Select Genres');
+		$genres += Genres::lists ( 'name', 'id' );
+		$labels = array('Select Label');
+		$labels += Labels::lists ( 'name', 'id' );
+		return View::make ( 'albums.edit' )->with ( 'album', $album )->with ( 'artists', $artists )->with ( 'formats', $formats )->with ( 'genres', $genres)->with ( 'labels', $labels );
 	}
 	
 	/**
@@ -79,7 +87,15 @@ class AlbumsController extends \BaseController {
 	 * @return Response
 	 */
 	public function update($id) {
-		//
+		$input = Input::except ( array (
+				'_method',
+				'_token' 
+		) );
+		if (! $this->albums->fill ( $input )->isValid ()) {
+			return Redirect::route ( 'albums.edit', $id )->withInput ()->withErrors ( $this->albums->messages );
+		}
+		$artist = $this->albums->find ( $id )->update ( $input );
+		return Redirect::route ( 'artists.index' );
 	}
 	
 	/**

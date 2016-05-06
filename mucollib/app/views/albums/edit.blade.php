@@ -21,31 +21,31 @@
 	</div>
 	{{ Form::model($album, array('route' => array('albums.update', $album->id), 'method' => 'put','class' => 'form-album')) }}
 		<h1>Edit Album</h1>
-		{{ Form::label('artists_id', '', array('class' => 'sr-only')) }} 
-		{{ Form::select('artists_id', $artists, '0', array('class' => 'form-control')) }} 
-		{{ $errors->first('artists_id') }}
+  		{{ Form::label('artists_id', '', array('class' => 'sr-only')) }}
+		{{ Form::select('artists_id', $artists, "$album->artists_id", array('class' => 'form-control')) }} 
+  		{{ $errors->first('artists_id') }}
 		{{ Form::label('name', '', array('class' => 'sr-only')) }} 
-		{{ Form::text('name', 'Title', array('class' => 'form-control')) }} 
+		{{ Form::text('name', $album->name, array('class' => 'form-control')) }} 
 		{{ $errors->first('name') }}
 		{{ Form::label('year', 'Released:') }} 
-		{{ Form::selectYear('year', date("Y"), 1900) }} 
+		{{ Form::selectYear('year', date("Y"), 1900, "$album->year") }} 
 		{{ Form::label('origyear', 'Originally released:') }} 
-		{{ Form::selectYear('origyear', date("Y"), 1900) }}
+		{{ Form::selectYear('origyear', date("Y"), 1900, "$album->origyear") }}
 		{{ Form::label('catno', '', array('class' => 'sr-only')) }} 
-		{{ Form::text('catno', 'Catalogue Number', array('class' => 'form-control')) }} 
+		{{ Form::text('catno', $album->catno, array('class' => 'form-control')) }} 
 		{{ Form::label('origcatno', '', array('class' => 'sr-only')) }} 
-		{{ Form::text('origcatno', 'Original Catalogue Number', array('class' => 'form-control')) }}
+		{{ Form::text('origcatno', $album->origcatno, array('class' => 'form-control')) }}
 		{{ Form::label('formats_id', '', array('class' => 'sr-only')) }} 
-		{{ Form::select('formats_id', $formats, '0', array('class' => 'form-control')) }} 
+		{{ Form::select('formats_id', $formats, "$album->formats_id", array('class' => 'form-control')) }} 
 		{{ $errors->first('formats_id') }} 
 		{{ Form::label('genres_id', '', array('class' => 'sr-only')) }} 
-		{{ Form::select('genres_id', $genres, '0', array('class' => 'form-control'))	}}
+		{{ Form::select('genres_id', $genres, "$album->genres_id", array('class' => 'form-control'))	}}
 		{{ $errors->first('genres_id') }} 
 		{{ Form::label('labels_id', 'Label:') }} 
-		{{ Form::select('labels_id', $labels, '0', array('class' => 'form-control'))	}}
+		{{ Form::select('labels_id', $labels, "$album->labels_id", array('class' => 'form-control'))	}}
 		{{ $errors->first('labels_id') }} 
 		{{ Form::label('origlabels_id', 'Original Label:') }} 
-		{{ Form::select('origlabels_id', $labels, '0', array('class' => 'form-control'))	}}
+		{{ Form::select('origlabels_id', $labels, "$album->origlabels_id", array('class' => 'form-control'))	}}
 		{{ $errors->first('origlabels_id') }} 
     	{{ Form::submit('Update',array('class' => 'btn btn-lg btn-primary btn-block')) }}
 	{{ Form::close() }} 
