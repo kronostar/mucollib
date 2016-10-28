@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+}
+.welcome {
+  padding: 40px 15px;
+  text-align: center;
+}
+.form-artist {
+	max-width: 330px;
+  	padding: 15px;
+  	margin: 0 auto;
+}
+.form-album {
+	max-width: 380px;
+  	padding: 15px;
+  	margin: 0 auto;
+}
