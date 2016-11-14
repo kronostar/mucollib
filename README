@@ -1,9 +1,11 @@
 MuColLib
 ========
 
-A database geared at providing a comprehensive resource of information about a music collection.  This goes way beyond just recording the Artist and Album title, although it can do that too.
+A database geared at providing a comprehensive resource of information about
+a music collection.  This goes way beyond just recording the Artist and Album
+title, although it can do that too.
 
-Find out more at: http://kronostar.github.com/MusicDB
+Find out more at: http://kronostar.github.com/mucollib
 
 This is the README file.
 
