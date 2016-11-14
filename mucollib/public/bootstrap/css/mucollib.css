@@ -1,3 +1,6 @@
+/*
+ * general stuff
+ */
 body {
   padding-top: 50px;
 }
@@ -14,4 +17,37 @@ body {
 	max-width: 380px;
   	padding: 15px;
   	margin: 0 auto;
+}
+
+/*
+ * Tables using divs
+ */
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 0;
+	display: table-cell;
+	padding: 2px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
 }

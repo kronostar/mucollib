@@ -1,6 +1,7 @@
-/bootstrap/compiled.php
+/node_modules
+/public/storage
 /vendor
-composer.phar
-composer.lock
-.DS_Store
-Thumbs.db
+/.idea
+Homestead.json
+Homestead.yaml
+.env
