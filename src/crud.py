@@ -7,12 +7,13 @@
 #
 # Create, Read, Update, Display
 #
+import tkinter as tk
 
 # Create
 def createDatabase(db):
+    db.execute("DROP TABLE IF EXISTS Album")
     db.execute("DROP TABLE IF EXISTS Artist")
     db.execute("DROP TABLE IF EXISTS Format")
-    db.execute("DROP TABLE IF EXISTS Album")
     db.execute("DROP TABLE IF EXISTS Genre")
 
     db.execute("CREATE TABLE Artist(ArtistId INTEGER PRIMARY KEY ASC, Name TEXT NOT NULL, Sort TEXT NOT NULL)")
@@ -37,6 +38,12 @@ def insertRow(db, table, data):
     db.execute(sql, (data))
     return db.lastrowid
 
+# Display
+def displayDataInList(l, data):
+    l.delete(0, tk.END)
+    for item in data:
+        l.insert(tk.END, item[0])
+
 # Read
 def selectRow(db, field, table, condition, ordering, data):
     sql = "SELECT " + field + " FROM " + table
@@ -60,6 +67,41 @@ def getAlbumsByArtist(db, myID):
         return selectRow(db, 'Album.Name', 'Artist, Album', \
             'Album.ArtistId = ?', 'Album.Year', (myID,))
 
+def selectArtistGroup(db, group, l1, l2):
+    if group is 'All':
+        myArtists = getAllArtistsByName(db)
+        myAlbums = getAlbumsByArtist(db, 0)
+    else:
+        myArtists = selectRow(db, 'Name', 'Artist', \
+                                   'Sort LIKE "' + group + '%"', \
+                                   'Sort COLLATE NOCASE', ())
+        myAlbums = selectRow(db, 'Album.Name', 'Artist, Album', \
+                                  'Artist.Sort LIKE "' + group + '%" AND Album.ArtistId = Artist.ArtistId', \
+                                  'Artist.Sort COLLATE NOCASE, Album.Year', ())
+    displayDataInList(l1, myArtists)
+    displayDataInList(l2, myAlbums)
+
+def selectArtist(event, l2, db):
+    w = event.widget
+    try:
+        idx = int(w.curselection()[0])
+        value = w.get(idx)
+        print('Artist selected', value)
+        myAlbums = selectRow(db, 'Album.Name', 'Artist, Album', \
+                                  'Artist.Name LIKE "' + value + '" AND Album.ArtistId = Artist.ArtistId', \
+                                  'Album.Year', ())
+        displayDataInList(l2, myAlbums)
+    except:
+        return
+
+def selectAlbum(event, db):
+    w = event.widget
+    try:
+        idx = int(w.curselection()[0])
+        value = w.get(idx)
+        print('Album selected', value)
+    except:
+        return
+
 # Update
 
-# Display
