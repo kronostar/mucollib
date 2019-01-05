@@ -3,7 +3,7 @@
 # Program: dbimport.py
 #  Author: Steve Martin
 # License: MIT
-# Copyright (c) 2018 Steve Martin
+# Copyright (c) 2018,2019 Steve Martin
 #
 # CSV file format:
 # 0 = Artist Name
