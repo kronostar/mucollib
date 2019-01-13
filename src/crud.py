@@ -8,6 +8,7 @@
 # Create, Read, Update, Display
 #
 import tkinter as tk
+from tkinter import messagebox, Button, Listbox, Label, Scrollbar, Toplevel
 
 # Create
 def createDatabase(db):
@@ -43,6 +44,14 @@ def displayDataInList(l, data):
     l.delete(0, tk.END)
     for item in data:
         l.insert(tk.END, item[0])
+
+def albumPage(myName):
+    album(myName) = Toplevel()
+    album.title(myName)
+    albumFrame = tk.Frame(album,relief=tk.RAISED, borderwidth=1, bg = "black")
+    albumFrame.grid(column = 0, row = 1)
+    label1 = Label(album, text = myName, font = ("Helvetica", 16))
+    label1.grid(column = 0, row = 1)
 
 # Read
 def selectRow(db, field, table, condition, ordering, data):
@@ -100,8 +109,10 @@ def selectAlbum(event, db):
         idx = int(w.curselection()[0])
         value = w.get(idx)
         print('Album selected', value)
+        albumPage(value)
     except:
         return
+    
 
 # Update
 

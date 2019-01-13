@@ -7,7 +7,7 @@
 #
 
 import tkinter as tk
-from tkinter import messagebox, Button, Listbox, Label, Scrollbar
+from tkinter import messagebox, Button, Listbox, Label, Scrollbar, Toplevel
 import sqlite3 as lite
 import sys
 
@@ -60,8 +60,6 @@ def startPage():
         button[i].grid(column = i + 2, row = 0)
     crud.selectArtistGroup(db, 'All', listbox1, listbox2)
 
-
-
 with lite.connect('music.db') as con:
     db = con.cursor()
     try:
@@ -71,6 +69,5 @@ with lite.connect('music.db') as con:
         msgImportData(db)
 
     startPage()
-
 
 win.mainloop()
