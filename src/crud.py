@@ -13,7 +13,8 @@ from tkinter import messagebox, Button, Entry, Listbox, Label, Scrollbar, Toplev
 import datetime
 from pickle import FRAME
 
-mydata = []
+myArtistData = []
+myAlbumData = []
 
 # Create
 def createDatabase(db):
@@ -62,6 +63,7 @@ def albumPage(db, myId):
     myGenre = selectRow(db, 'Name', 'Genre', '', '', ())
     album = Toplevel()
     album.title(myAlbum[0][1])
+    album.geometry("+150+300")
 
     # the frames for layout
     topFrame = Frame(album, width = 400, height = 100)
@@ -91,7 +93,7 @@ def albumPage(db, myId):
     e4.grid(column = 1, row = 4)
     e5.grid(column = 1, row = 5)
     b1 = Button(buttonframe, text = "Save")
-    b2 = Button(buttonframe, text = "Close")
+    b2 = Button(buttonframe, text = "Close", command = album.destroy)
     b1.grid(column = 0, row = 0)
     b2.grid(column = 1, row = 0)
 
@@ -115,8 +117,8 @@ def getAlbumsByArtist(db, myID):
                             'Album.ArtistId = Artist.ArtistId', \
                             'Artist.Sort COLLATE NOCASE, Album.Year', ())
     else:
-        return selectRow(db, 'Album.AlbumId,Album.Name', 'Artist, Album', \
-                            'Album.ArtistId = ?', 'Album.Year', (myID,))
+        return selectRow(db, 'AlbumId,Name', 'Album', \
+                            'ArtistId = ?', 'Year', (myID,))
 
 def selectArtistGroup(db, group, l1, l2):
     if group is 'All':
@@ -131,20 +133,25 @@ def selectArtistGroup(db, group, l1, l2):
                                   'Artist.Sort COLLATE NOCASE, Album.Year', ())
     displayDataInList(l1, myArtists)
     displayDataInList(l2, myAlbums)
-    global mydata
-    mydata = myAlbums
+    global myArtistData
+    global myAlbumData
+    myArtistData = myArtists
+    myAlbumData = myAlbums
 
-def selectArtist(event, l2, db):
+def selectArtist(event, l1, l2, db):
     w = event.widget
     try:
         idx = int(w.curselection()[0])
-        value = w.get(idx)
-        myAlbums = selectRow(db, 'AlbumId,Album.Name', 'Artist, Album', \
-                                  'Artist.Name LIKE "' + value + '" AND Album.ArtistId = Artist.ArtistId', \
-                                  'Album.Year', ())
+        global myArtistData
+        global myAlbumData
+        myArtists = selectRow(db, 'ArtistId,Name', 'Artist', \
+                                   'ArtistId = ?', \
+                                   '', (myArtistData[idx][0],))
+        myAlbums = getAlbumsByArtist(db, myArtistData[idx][0])
+        displayDataInList(l1, myArtists)
         displayDataInList(l2, myAlbums)
-        global mydata
-        mydata = myAlbums
+        myAlbumData = myAlbums
+        myArtistData = myArtists
     except:
         return
 
@@ -152,8 +159,8 @@ def selectAlbum(event, db):
     w = event.widget
     try:
         idx = int(w.curselection()[0])
-        global mydata
-        albumPage(db, mydata[idx][0])
+        global myAlbumData
+        albumPage(db, myAlbumData[idx][0])
     except:
         return
     

@@ -15,7 +15,7 @@ import crud
 import dbimport
 
 win = tk.Tk()
-#win.geometry("800x400")
+win.geometry("+30+30")
 win.title("Music Collection Library")
 
 def msgImportData(db):
@@ -44,7 +44,7 @@ def startPage():
     listbox2.grid(column = 12, row = 3)
     scrollbar2.config(command = listbox2.yview)
 
-    listbox1.bind('<<ListboxSelect>>', lambda e : crud.selectArtist(e, listbox2, db))
+    listbox1.bind('<<ListboxSelect>>', lambda e : crud.selectArtist(e, listbox1, listbox2, db))
     listbox2.bind('<<ListboxSelect>>', lambda e : crud.selectAlbum(e, db))
 
     btext = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
