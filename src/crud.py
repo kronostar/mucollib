@@ -104,12 +104,14 @@ def selectRow(db, field, table, condition, ordering, data):
         sql += " WHERE " + condition
     if ordering is not '':
         sql += " ORDER BY " + ordering
-    print(sql)
     db.execute(sql, (data))
     return db.fetchall()
 
 def getAllArtistsByName(db):
     return selectRow(db, 'ArtistId,Name', 'Artist', '', 'Sort COLLATE NOCASE', ())
+
+def getArtistById(db, myID):
+    return selectRow(db, 'ArtistId,Name', 'Artist', 'ArtistId = ?', '', (myID,))
 
 def getAlbumsByArtist(db, myID):
     if myID is 0:
@@ -144,9 +146,7 @@ def selectArtist(event, l1, l2, db):
         idx = int(w.curselection()[0])
         global myArtistData
         global myAlbumData
-        myArtists = selectRow(db, 'ArtistId,Name', 'Artist', \
-                                   'ArtistId = ?', \
-                                   '', (myArtistData[idx][0],))
+        myArtists = getArtistById(db, myArtistData[idx][0])
         myAlbums = getAlbumsByArtist(db, myArtistData[idx][0])
         displayDataInList(l1, myArtists)
         displayDataInList(l2, myAlbums)
