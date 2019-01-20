@@ -8,7 +8,12 @@
 # Create, Read, Update, Display
 #
 import tkinter as tk
-from tkinter import messagebox, Button, Listbox, Label, Scrollbar, Toplevel
+from tkinter import messagebox, Button, Entry, Listbox, Label, Scrollbar, Toplevel, ttk,\
+    Frame
+import datetime
+from pickle import FRAME
+
+mydata = []
 
 # Create
 def createDatabase(db):
@@ -41,17 +46,54 @@ def insertRow(db, table, data):
 
 # Display
 def displayDataInList(l, data):
+    # data is in format id,name
     l.delete(0, tk.END)
-    for item in data:
-        l.insert(tk.END, item[0])
+    for key,value in data:
+        l.insert(tk.END, value)
 
-def albumPage(myName):
-    album(myName) = Toplevel()
-    album.title(myName)
-    albumFrame = tk.Frame(album,relief=tk.RAISED, borderwidth=1, bg = "black")
-    albumFrame.grid(column = 0, row = 1)
-    label1 = Label(album, text = myName, font = ("Helvetica", 16))
-    label1.grid(column = 0, row = 1)
+def albumPage(db, myId):
+    now = datetime.datetime.now()
+    year = now.year + 1
+
+    # get album data
+    myAlbum = selectRow(db, 'AlbumId,Name,Year,ArtistId,FormatId,GenreId', 'Album', 'AlbumId = ?', '', (myId,))
+    myArtist = selectRow(db, 'Name', 'Artist', 'ArtistId = ?', '', (myAlbum[0][3],))
+    myFormat = selectRow(db, 'Name', 'Format', '', '', ())
+    myGenre = selectRow(db, 'Name', 'Genre', '', '', ())
+    album = Toplevel()
+    album.title(myAlbum[0][1])
+
+    # the frames for layout
+    topFrame = Frame(album, width = 400, height = 100)
+    topFrame.grid(column = 0, row = 0)
+    buttonframe = Frame(album, width = 400, height = 10)
+    buttonframe.grid(column = 0, row = 6)
+    
+    # the form
+    label1 = Label(topFrame, text = "Artist").grid(column = 0, row = 1)
+    label2 = Label(topFrame, text = "Title").grid(column = 0, row = 2)
+    label3 = Label(topFrame, text = "Year").grid(column = 0, row = 3)
+    label4 = Label(topFrame, text = "Format").grid(column = 0, row = 4)
+    label5 = Label(topFrame, text = "Genre").grid(column = 0, row = 5)
+    e1 = Entry(topFrame, width = 40)
+    e2 = Entry(topFrame, width = 40)
+    e3 = ttk.Combobox(topFrame, values = list(range(1900, year)))
+    e4 = ttk.Combobox(topFrame, values = myFormat)
+    e5 = ttk.Combobox(topFrame, values = myGenre)
+    e1.insert(32,myArtist[0][0])
+    e2.insert(32,myAlbum[0][1])
+    e3.current(myAlbum[0][2] - 1900)
+    e4.current(myAlbum[0][4] - 1)
+    e5.current(myAlbum[0][5] - 1)
+    e1.grid(column = 1, row = 1)
+    e2.grid(column = 1, row = 2)
+    e3.grid(column = 1, row = 3)
+    e4.grid(column = 1, row = 4)
+    e5.grid(column = 1, row = 5)
+    b1 = Button(buttonframe, text = "Save")
+    b2 = Button(buttonframe, text = "Close")
+    b1.grid(column = 0, row = 0)
+    b2.grid(column = 1, row = 0)
 
 # Read
 def selectRow(db, field, table, condition, ordering, data):
@@ -65,41 +107,44 @@ def selectRow(db, field, table, condition, ordering, data):
     return db.fetchall()
 
 def getAllArtistsByName(db):
-    return selectRow(db, 'Name', 'Artist', '', 'Sort COLLATE NOCASE', ())
+    return selectRow(db, 'ArtistId,Name', 'Artist', '', 'Sort COLLATE NOCASE', ())
 
 def getAlbumsByArtist(db, myID):
     if myID is 0:
-        return selectRow(db, 'Album.Name', 'Artist, Album', \
-            'Album.ArtistId = Artist.ArtistId', \
-            'Artist.Sort COLLATE NOCASE, Album.Year', ())
+        return selectRow(db, 'AlbumId,Album.Name', 'Artist, Album', \
+                            'Album.ArtistId = Artist.ArtistId', \
+                            'Artist.Sort COLLATE NOCASE, Album.Year', ())
     else:
-        return selectRow(db, 'Album.Name', 'Artist, Album', \
-            'Album.ArtistId = ?', 'Album.Year', (myID,))
+        return selectRow(db, 'Album.AlbumId,Album.Name', 'Artist, Album', \
+                            'Album.ArtistId = ?', 'Album.Year', (myID,))
 
 def selectArtistGroup(db, group, l1, l2):
     if group is 'All':
         myArtists = getAllArtistsByName(db)
         myAlbums = getAlbumsByArtist(db, 0)
     else:
-        myArtists = selectRow(db, 'Name', 'Artist', \
+        myArtists = selectRow(db, 'ArtistId,Name', 'Artist', \
                                    'Sort LIKE "' + group + '%"', \
                                    'Sort COLLATE NOCASE', ())
-        myAlbums = selectRow(db, 'Album.Name', 'Artist, Album', \
+        myAlbums = selectRow(db, 'AlbumId,Album.Name', 'Artist, Album', \
                                   'Artist.Sort LIKE "' + group + '%" AND Album.ArtistId = Artist.ArtistId', \
                                   'Artist.Sort COLLATE NOCASE, Album.Year', ())
     displayDataInList(l1, myArtists)
     displayDataInList(l2, myAlbums)
+    global mydata
+    mydata = myAlbums
 
 def selectArtist(event, l2, db):
     w = event.widget
     try:
         idx = int(w.curselection()[0])
         value = w.get(idx)
-        print('Artist selected', value)
-        myAlbums = selectRow(db, 'Album.Name', 'Artist, Album', \
+        myAlbums = selectRow(db, 'AlbumId,Album.Name', 'Artist, Album', \
                                   'Artist.Name LIKE "' + value + '" AND Album.ArtistId = Artist.ArtistId', \
                                   'Album.Year', ())
         displayDataInList(l2, myAlbums)
+        global mydata
+        mydata = myAlbums
     except:
         return
 
@@ -107,9 +152,8 @@ def selectAlbum(event, db):
     w = event.widget
     try:
         idx = int(w.curselection()[0])
-        value = w.get(idx)
-        print('Album selected', value)
-        albumPage(value)
+        global mydata
+        albumPage(db, mydata[idx][0])
     except:
         return
     
