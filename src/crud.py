@@ -12,7 +12,6 @@ from tkinter import messagebox, Button, Entry, Listbox, Label, Scrollbar, Toplev
 import datetime
 from idlelib import window
 
-
 myArtistData = []
 myAlbumData = []
 
@@ -93,7 +92,7 @@ def albumPage(db, myId):
     e4.grid(column = 1, row = 4)
     e5.grid(column = 1, row = 5)
     b1 = Button(buttonframe, text = "Save")
-    b1.configure(command = lambda: updateAlbum(db, myAlbum, e1, e2, e3, e4, e5))
+    b1.configure(command = lambda: updateAlbum(db, album, (myAlbum[0][0], e1, e2, e3, e4, e5)))
     b2 = Button(buttonframe, text = "Close", command = album.destroy)
     b1.grid(column = 0, row = 0)
     b2.grid(column = 1, row = 0)
@@ -176,12 +175,15 @@ def selectAlbum(event, db):
     
 
 # Update
-def updateAlbum(db, myAlbum, f1, f2, f3, f4, f5):
-    print("Artist: %s\nAlbum: %s\nYear: %s\nFormat: %s\nGenre: %s\n" % (f1.get(), f2.get(), f3.get(), f4.get(), f5.get()))
-    artistid = getArtistByName(db, f1.get())
-    formatid = getFormatByName(db, f4.get())
-    genreid = getGenreByName(db, f5.get())
-    detail = (f2.get(), f3.get(), artistid[0][0], formatid[0][0], genreid[0][0],)
-    print(detail)
-#    updateRow(db, 'Album(Name, Year, ArtistId, FormatId, GenreId)', detail)
+def updateAlbum(db, myWindow, data):
+    artistid = getArtistByName(db, data[1].get())
+    year = int(data[3].get())
+    formatid = getFormatByName(db, data[4].get())
+    genreid = getGenreByName(db, data[5].get())
+    detail = (data[2].get(), year, artistid[0][0], formatid[0][0], genreid[0][0],data[0])
+    sql = "UPDATE Album\n"
+    sql += "SET Name = ?, Year = ?, ArtistId = ?, FormatId = ?, GenreId = ? "
+    sql += "WHERE AlbumId = ?"
+    db.execute(sql,(detail))
+    myWindow.destroy()
 
