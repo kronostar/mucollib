@@ -30,6 +30,8 @@ def startPage():
     topFrame.grid(column = 0, row = 1, columnspan = 27)
     listFrame = Frame(win)
     listFrame.grid(column = 0, row = 2)
+    sideFrame = Frame(win, borderwidth=1)
+    sideFrame.grid(column = 1, row = 2)
 
     label1 = Label(listFrame, text = "Artists", font = ("Helvetica", 16))
     label1.grid(column = 0, row = 0)
@@ -62,6 +64,11 @@ def startPage():
         button[i].configure(command = lambda x = btext[i]: crud.selectArtistGroup(db, x, listbox1, listbox2))
         button[i].grid(column = i + 2, row = 0)
     crud.selectArtistGroup(db, 'All', listbox1, listbox2)
+    
+    addButton = Button(sideFrame, text = "Add Album")
+    addButton.grid(column = 1, row = 0)
+    closeButton = Button(sideFrame, text = "Quit", command = win.destroy)
+    closeButton.grid(column = 1, row = 1)
 
 with lite.connect('music.db') as con:
     db = con.cursor()
