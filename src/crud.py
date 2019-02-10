@@ -174,12 +174,12 @@ def selectArtist(event, l1, l2, db):
     except:
         return
 
-def selectAlbum(event, db):
+def selectAlbum(event, con, db, listbox1, listbox2):
     w = event.widget
     try:
         idx = int(w.curselection()[0])
         global myAlbumData
-        albumPage(db, myAlbumData[idx][0])
+        albumPage(con, db, listbox1, listbox2, myAlbumData[idx][0])
     except:
         return
 
@@ -216,7 +216,18 @@ def updateAlbum(con, db, listbox1, listbox2, myWindow, data):
         sql += "WHERE AlbumId = ?"
         db.execute(sql,(detail))
     
+    cleanArtists(db)
     con.commit()
     selectArtistGroup(db, 'All', listbox1, listbox2)
     myWindow.destroy()
 
+def cleanArtists(db):
+    # remove artists with no albums
+    myArtists = getAllArtistsByName(db)
+    for key, value in myArtists:
+        myAlbums = getAlbumsByArtist(db, key)
+        if len(myAlbums) is 0:
+            sql = 'DELETE FROM Artist WHERE ArtistId = ?'
+            db.execute(sql, (key,))
+
+    

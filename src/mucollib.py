@@ -50,7 +50,7 @@ def startPage():
     scrollbar2.config(command = listbox2.yview)
 
     listbox1.bind('<<ListboxSelect>>', lambda e : crud.selectArtist(e, listbox1, listbox2, db))
-    listbox2.bind('<<ListboxSelect>>', lambda e : crud.selectAlbum(e, db))
+    listbox2.bind('<<ListboxSelect>>', lambda e : crud.selectAlbum(e, con, db, listbox1, listbox2))
 
     addButton = Button(sideFrame, text = "Add Album")
     addButton.configure(command = lambda x = 0: crud.albumPage(con, db, listbox1, listbox2, x))
