@@ -107,6 +107,35 @@ def albumPage(con, db, listbox1, listbox2, myId):
     b1.grid(column = 0, row = 0)
     b2.grid(column = 1, row = 0)
 
+def artistPage(con, db, listbox1, listbox2, myId):
+    myArtist = selectRow(db, 'ArtistId,Name,Sort', 'Artist', 'ArtistId = ?', '', (myId,))
+
+    # the window
+    artist = Toplevel()
+    artist.title("Edit Artist")
+    artist.geometry("+150+300")
+
+    # the frames for layout
+    topFrame = Frame(artist, width = 400, height = 100)
+    topFrame.grid(column = 0, row = 0)
+    buttonframe = Frame(artist, width = 400, height = 10)
+    buttonframe.grid(column = 0, row = 6)
+    
+    # the form
+    label1 = Label(topFrame, text = "Name").grid(column = 0, row = 1)
+    label2 = Label(topFrame, text = "Sort").grid(column = 0, row = 2)
+    e1 = Entry(topFrame, width = 40)
+    e2 = Entry(topFrame, width = 40)
+    e1.insert(32,myArtist[0][1])
+    e2.insert(32,myArtist[0][2])
+    e1.grid(column = 1, row = 1)
+    e2.grid(column = 1, row = 2)
+    b1 = Button(buttonframe, text = "Save")
+    b1.configure(command = lambda: updateArtist(con, db, listbox1, listbox2, artist, (myArtist[0][0], e1, e2)))
+    b2 = Button(buttonframe, text = "Close", command = artist.destroy)
+    b1.grid(column = 0, row = 0)
+    b2.grid(column = 1, row = 0)
+    
 # Read
 def selectRow(db, field, table, condition, ordering, data):
     sql = "SELECT " + field + " FROM " + table
@@ -174,6 +203,24 @@ def selectArtist(event, l1, l2, db):
     except:
         return
 
+
+def selectArtistById(db, myId, l1, l2):
+    global myArtistData
+    global myAlbumData
+    myArtists = getArtistById(db, myId)
+    myAlbums = getAlbumsByArtist(db, myId)
+    displayDataInList(l1, myArtists)
+    displayDataInList(l2, myAlbums)
+    myAlbumData = myAlbums
+    myArtistData = myArtists
+
+def editArtist(event, con, listbox1, listbox2, db):
+    try:
+        global myArtistData
+        artistPage(con, db, listbox1, listbox2, myArtistData[0][0])
+    except:
+        return
+
 def selectAlbum(event, con, db, listbox1, listbox2):
     w = event.widget
     try:
@@ -184,6 +231,17 @@ def selectAlbum(event, con, db, listbox1, listbox2):
         return
 
 # Update
+def updateArtist(con, db, listbox1, listbox2, myWindow, data):
+    detail = (data[1].get(), data[2].get(), data[0])
+    sql = "UPDATE Artist\n"
+    sql += "SET Name = ?, Sort = ? "
+    sql += "WHERE ArtistId = ?"
+    db.execute(sql,(detail))
+    
+    con.commit()
+    selectArtistById(db, data[0], listbox1, listbox2)
+    myWindow.destroy()
+
 def updateAlbum(con, db, listbox1, listbox2, myWindow, data):
     artistName = data[1].get()
     artistid = getArtistByName(db, artistName)
