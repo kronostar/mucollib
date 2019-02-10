@@ -52,6 +52,13 @@ def startPage():
     listbox1.bind('<<ListboxSelect>>', lambda e : crud.selectArtist(e, listbox1, listbox2, db))
     listbox2.bind('<<ListboxSelect>>', lambda e : crud.selectAlbum(e, db))
 
+    addButton = Button(sideFrame, text = "Add Album")
+    addButton.configure(command = lambda x = 0: crud.albumPage(con, db, listbox1, listbox2, x))
+    addButton.grid(column = 1, row = 0)
+    closeButton = Button(sideFrame, text = "Close")
+    closeButton.configure(command = lambda: win.destroy())
+    closeButton.grid(column = 1, row = 1)
+
     btext = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     label3 = Label(topFrame, text = "Select Artist Group", bg = "black", fg = "white")
     label3.grid(column = 0, row = 0)
@@ -64,11 +71,6 @@ def startPage():
         button[i].configure(command = lambda x = btext[i]: crud.selectArtistGroup(db, x, listbox1, listbox2))
         button[i].grid(column = i + 2, row = 0)
     crud.selectArtistGroup(db, 'All', listbox1, listbox2)
-    
-    addButton = Button(sideFrame, text = "Add Album")
-    addButton.grid(column = 1, row = 0)
-    closeButton = Button(sideFrame, text = "Quit", command = win.destroy)
-    closeButton.grid(column = 1, row = 1)
 
 with lite.connect('music.db') as con:
     db = con.cursor()

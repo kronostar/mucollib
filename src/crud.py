@@ -32,6 +32,10 @@ def createDatabase(db):
     db.execute("CREATE INDEX fk_Album_Artist ON Album(ArtistId ASC)")
     db.execute("CREATE INDEX fk_Album_Format ON Album(FormatId ASC)")
     db.execute("CREATE INDEX fk_Album_Genre ON Album(GenreId ASC)")
+    
+    # insert start values for for format and genre
+    insertRow(db, 'Format(Name)', ("CD",))
+    insertRow(db, 'Genre(Name)', ("Rock",))
 
 def insertRow(db, table, data):
     sql = "INSERT INTO " + table + " VALUES("
@@ -51,15 +55,21 @@ def displayDataInList(l, data):
     for key,value in data:
         l.insert(tk.END, value)
 
-def albumPage(db, myId):
+def albumPage(con, db, listbox1, listbox2, myId):
     now = datetime.datetime.now()
     year = now.year + 1
 
     # get album data
-    myAlbum = selectRow(db, 'AlbumId,Name,Year,ArtistId,FormatId,GenreId', 'Album', 'AlbumId = ?', '', (myId,))
-    myArtist = selectRow(db, 'Name', 'Artist', 'ArtistId = ?', '', (myAlbum[0][3],))
+    if myId is 0:
+        myAlbum = [(myId, "New Album", 1900, 0, 1, 1)]
+        myArtist = [("Unknown",)]
+    else:
+        myAlbum = selectRow(db, 'AlbumId,Name,Year,ArtistId,FormatId,GenreId', 'Album', 'AlbumId = ?', '', (myId,))
+        myArtist = selectRow(db, 'Name', 'Artist', 'ArtistId = ?', '', (myAlbum[0][3],))
     myFormat = selectRow(db, 'Name', 'Format', '', '', ())
     myGenre = selectRow(db, 'Name', 'Genre', '', '', ())
+    
+    # the window
     album = Toplevel()
     album.title(myAlbum[0][1])
     album.geometry("+150+300")
@@ -92,7 +102,7 @@ def albumPage(db, myId):
     e4.grid(column = 1, row = 4)
     e5.grid(column = 1, row = 5)
     b1 = Button(buttonframe, text = "Save")
-    b1.configure(command = lambda: updateAlbum(db, album, (myAlbum[0][0], e1, e2, e3, e4, e5)))
+    b1.configure(command = lambda: updateAlbum(con, db, listbox1, listbox2, album, (myAlbum[0][0], e1, e2, e3, e4, e5)))
     b2 = Button(buttonframe, text = "Close", command = album.destroy)
     b1.grid(column = 0, row = 0)
     b2.grid(column = 1, row = 0)
@@ -172,18 +182,41 @@ def selectAlbum(event, db):
         albumPage(db, myAlbumData[idx][0])
     except:
         return
-    
 
 # Update
-def updateAlbum(db, myWindow, data):
-    artistid = getArtistByName(db, data[1].get())
+def updateAlbum(con, db, listbox1, listbox2, myWindow, data):
+    artistName = data[1].get()
+    artistid = getArtistByName(db, artistName)
+    if len(artistid) is 0: # new artist
+        detail = (artistName, artistName)
+        insertRow(db, 'Artist(Name, Sort)', detail)
+        artistid = getArtistByName(db, artistName)
+        
     year = int(data[3].get())
-    formatid = getFormatByName(db, data[4].get())
-    genreid = getGenreByName(db, data[5].get())
-    detail = (data[2].get(), year, artistid[0][0], formatid[0][0], genreid[0][0],data[0])
-    sql = "UPDATE Album\n"
-    sql += "SET Name = ?, Year = ?, ArtistId = ?, FormatId = ?, GenreId = ? "
-    sql += "WHERE AlbumId = ?"
-    db.execute(sql,(detail))
+
+    formatName = data[4].get()
+    formatid = getFormatByName(db, formatName)
+    if len(formatid) is 0: # new format
+        insertRow(db, 'Format(Name)', (formatName,))
+        formatid = getFormatByName(db, formatName)    
+    
+    genreName = data[5].get()
+    genreid = getGenreByName(db, genreName)
+    if len(genreid) is 0: # new genre
+        insertRow(db, 'Genre(Name)', (genreName,))
+        genreid = getGenreByName(db, genreName)    
+
+    if data[0] is 0: # new album
+        detail = (data[2].get(), year, artistid[0][0], formatid[0][0], genreid[0][0])
+        insertRow(db, 'Album(Name, Year, ArtistId, FormatId, GenreId)', detail)
+    else:
+        detail = (data[2].get(), year, artistid[0][0], formatid[0][0], genreid[0][0],data[0])
+        sql = "UPDATE Album\n"
+        sql += "SET Name = ?, Year = ?, ArtistId = ?, FormatId = ?, GenreId = ? "
+        sql += "WHERE AlbumId = ?"
+        db.execute(sql,(detail))
+    
+    con.commit()
+    selectArtistGroup(db, 'All', listbox1, listbox2)
     myWindow.destroy()
 
