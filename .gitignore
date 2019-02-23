@@ -26,3 +26,9 @@
 *.mtc
 *.mtc0
 *~
+
+src/Music\.csv
+
+src/music\.db
+
+src/__pycache__/
