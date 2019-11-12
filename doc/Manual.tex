@@ -5,8 +5,16 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \usepackage{graphicx}
+\usepackage{longtable}
 \author{\LARGE Steve Martin}
 \title{\Huge MuColLib}
+\usepackage{hyperref}
+\hypersetup{colorlinks, 
+           citecolor=black,
+           filecolor=black,
+           linkcolor=black,
+           urlcolor=black,
+           bookmarksopen=true}
 \begin{document}
 \maketitle
 \null
@@ -22,14 +30,25 @@ Free Documentation License''.
 \tableofcontents
 \newpage
 \chapter{Introduction}
-This is the manual for \textbf{\textit{MuColLib}}, the music collection library tool. A database geared at providing a comprehensive resource of information about a music collection.
+This is the manual for \textbf{\textit{MuColLib}}, the \textbf{Mu}sic \textbf{Col}lection \textbf{Lib}rary tool. A database geared at providing a comprehensive resource of information about a music collection.  This goes way beyond just recording the Artist and Album title, although it can do that too!
+\\
 
-This goes way beyond just recording the Artist and Album title, although it can do that too!
+The list of tables presented in Part II, represent the initial basis upon which this tool is built: there may be changes in the future.
+ 
 \mainmatter
 \part{Guide}
 \chapter{Getting Started}
 \section{Installation}
 At this moment in time installation is pretty basic, we have not packaged the program in any way.  So, for now, the best way to install is to download the programs, install them somewhere appropriate, and run them with Python 3.7.
+\section{First run}
+TBD - add a screen shot
+\section{Start screen}
+TBD - add a screen shot
+\chapter{Adding Entries}
+\section{Artists}
+\section{Albums}\phantomsection
+\part{Database}
+\include{tables}
 \part{Licenses}
 \include{fdl}
 \newpage
