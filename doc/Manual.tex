@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \usepackage{graphicx}
+\graphicspath{ {./images/} }
 \usepackage{longtable}
 \author{\LARGE Steve Martin}
 \title{\Huge MuColLib}
@@ -37,27 +38,9 @@ The list of tables presented in Part II, represent the initial basis upon which 
  
 \mainmatter
 \part{Guide}
-\chapter{Getting Started}
-\section{Installation}
-At this moment in time installation is pretty basic, we have not packaged the program in any way.  So, for now, the best way to install is to download the programs, install them somewhere appropriate, and run them with Python 3.7.
-\pagebreak 
-\section{First run}
-When the program is run for the first time it will create a database, because one does not exist, and will present the following screen:
+\include{chapter1}
+\include{chapter2}
 
-\includegraphics[scale=1]{Images/firstRun.png}
-
-For now we will assume that you do not have an available CSV file in the correct format (more on this below), and you select \textbf{\textit{No}}
-
-\section{Start screen}
-Once past the first run screen, or if this is not the first time you have run the program, you will see this screen:
-
-\includegraphics[scale=1]{Images/firstScreen.png}
-
-Which, of course, would ordinarily be populated with elements of your music library.
-
-\chapter{Adding Entries}
-\section{Artists}
-\section{Albums}\phantomsection
 \part{Database}
 \include{tables}
 \part{Licenses}
