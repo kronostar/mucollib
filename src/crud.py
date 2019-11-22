@@ -33,7 +33,7 @@ def createDatabase(db):
     db.execute("CREATE INDEX fk_Album_Format ON Album(FormatId ASC)")
     db.execute("CREATE INDEX fk_Album_Genre ON Album(GenreId ASC)")
     
-    # insert start values for for format and genre
+    # insert start values for format and genre
     insertRow(db, 'Format(Name)', ("CD",))
     insertRow(db, 'Genre(Name)', ("Rock",))
 
