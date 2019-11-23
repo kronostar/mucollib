@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#
 # 
 # Program: dbimport.py
 #  Author: Steve Martin
