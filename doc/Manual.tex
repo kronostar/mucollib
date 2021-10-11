@@ -1,0 +1,69 @@
+\documentclass[12pt,a4paper,final,twoside,titlepage]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{longtable}
+\author{\LARGE Steve Martin}
+\title{\Huge MuColLib}
+\usepackage{hyperref}
+\hypersetup{colorlinks, 
+           citecolor=black,
+           filecolor=black,
+           linkcolor=black,
+           urlcolor=black,
+           bookmarksopen=true}
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	\raggedleft % Right align the title page
+	
+	\rule{1pt}{\textheight} % Vertical line
+	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		
+		{\Huge\bfseries MuColLib}\\[2\baselineskip] % Title
+		{\large\textit{The \textbf{Mu}sic \textbf{Col}lection \textbf{Lib}rary tool}}\\
+		{\large\textit{A user manual}}\\[4\baselineskip] % Subtitle or further description
+		{\Large\textsc{steve martin}} % Author name, lower case for consistent small caps
+		\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+	}
+
+\end{titlepage}
+\null
+\vfill
+Copyright \copyright{}  2018,2019  Steve Martin.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
+\frontmatter
+\tableofcontents
+\newpage
+\chapter{Introduction}
+This is the manual for \textbf{\textit{MuColLib}}, the \textbf{Mu}sic \textbf{Col}lection \textbf{Lib}rary tool. A database geared at providing a comprehensive resource of information about a music collection.  This goes way beyond just recording the Artist and Album title, although it can do that too!
+\\
+
+The list of tables presented in Part II, represent the initial basis upon which this tool is built: there may be changes in the future.
+ 
+\mainmatter
+\part{Guide}
+\include{chapter1}
+\include{chapter2}
+
+\part{Database}
+\include{tables}
+\part{Licenses}
+\include{fdl}
+\newpage
+\include{3ClauseBsd}
+\end{document}
