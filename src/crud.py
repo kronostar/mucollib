@@ -10,7 +10,7 @@
 import tkinter as tk
 from tkinter import messagebox, Button, Entry, Listbox, Label, Scrollbar, Toplevel, ttk, Frame
 import datetime
-from idlelib import window
+# from idlelib import window
 
 myArtistData = []
 myAlbumData = []
@@ -41,7 +41,7 @@ def insertRow(db, table, data):
     sql = "INSERT INTO " + table + " VALUES("
     i = 0
     while i < len(data):
-        if i is not 0: sql += ","
+        if i != 0: sql += ","
         sql += "?"
         i += 1
     sql += ") "
@@ -60,7 +60,7 @@ def albumPage(con, db, listbox1, listbox2, myId):
     year = now.year + 1
 
     # get album data
-    if myId is 0:
+    if myId == 0:
         myAlbum = [(myId, "New Album", 1900, 0, 1, 1)]
         myArtist = [("Unknown",)]
     else:
@@ -139,9 +139,9 @@ def artistPage(con, db, listbox1, listbox2, myId):
 # Read
 def selectRow(db, field, table, condition, ordering, data):
     sql = "SELECT " + field + " FROM " + table
-    if condition is not '':
+    if condition != '':
         sql += " WHERE " + condition
-    if ordering is not '':
+    if ordering != '':
         sql += " ORDER BY " + ordering
     db.execute(sql, (data))
     return db.fetchall()
@@ -162,7 +162,7 @@ def getGenreByName(db, myName):
     return selectRow(db, 'GenreId', 'Genre', 'Name = ?', '', (myName,))
 
 def getAlbumsByArtist(db, myID):
-    if myID is 0:
+    if myID == 0:
         return selectRow(db, 'AlbumId,Album.Name', 'Artist, Album', \
                             'Album.ArtistId = Artist.ArtistId', \
                             'Artist.Sort COLLATE NOCASE, Album.Year', ())
@@ -171,7 +171,7 @@ def getAlbumsByArtist(db, myID):
                             'ArtistId = ?', 'Year', (myID,))
 
 def selectArtistGroup(db, group, l1, l2):
-    if group is 'All':
+    if group == 'All':
         myArtists = getAllArtistsByName(db)
         myAlbums = getAlbumsByArtist(db, 0)
     else:
@@ -245,7 +245,7 @@ def updateArtist(con, db, listbox1, listbox2, myWindow, data):
 def updateAlbum(con, db, listbox1, listbox2, myWindow, data):
     artistName = data[1].get()
     artistid = getArtistByName(db, artistName)
-    if len(artistid) is 0: # new artist
+    if len(artistid) == 0: # new artist
         detail = (artistName, artistName)
         insertRow(db, 'Artist(Name, Sort)', detail)
         artistid = getArtistByName(db, artistName)
@@ -254,17 +254,17 @@ def updateAlbum(con, db, listbox1, listbox2, myWindow, data):
 
     formatName = data[4].get()
     formatid = getFormatByName(db, formatName)
-    if len(formatid) is 0: # new format
+    if len(formatid) == 0: # new format
         insertRow(db, 'Format(Name)', (formatName,))
         formatid = getFormatByName(db, formatName)    
     
     genreName = data[5].get()
     genreid = getGenreByName(db, genreName)
-    if len(genreid) is 0: # new genre
+    if len(genreid) == 0: # new genre
         insertRow(db, 'Genre(Name)', (genreName,))
         genreid = getGenreByName(db, genreName)    
 
-    if data[0] is 0: # new album
+    if data[0] == 0: # new album
         detail = (data[2].get(), year, artistid[0][0], formatid[0][0], genreid[0][0])
         insertRow(db, 'Album(Name, Year, ArtistId, FormatId, GenreId)', detail)
     else:
@@ -284,7 +284,7 @@ def cleanArtists(db):
     myArtists = getAllArtistsByName(db)
     for key, value in myArtists:
         myAlbums = getAlbumsByArtist(db, key)
-        if len(myAlbums) is 0:
+        if len(myAlbums) == 0:
             sql = 'DELETE FROM Artist WHERE ArtistId = ?'
             db.execute(sql, (key,))
 
