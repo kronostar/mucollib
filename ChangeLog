@@ -1,3 +1,10 @@
+2021-10-11	Steve Martin  <kronostar.st4@gmail.com>
+	* Python bumped to 3.9
+	* Copyright bumped
+
+2019-11-06  Steve Martin  <kronostar.st4@gmail.com>
+	* Version 1.0 released
+
 2018-12-02	Steve Martin  <kronostar.st4@gmail.com>
 	* Start of rewrite in Python 3.7 as a desktop app
 

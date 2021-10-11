@@ -1,9 +1,9 @@
-#!/usr/local/bin/python3.7
+#!/usr/bin/python3.9
 # 
 # Program: mucollib.py
 #  Author: Steve Martin
 # License: MIT
-# Copyright (c) 2018,2019 Steve Martin
+# Copyright (C) 2018,2019,2021 Steve Martin
 #
 
 import tkinter as tk
