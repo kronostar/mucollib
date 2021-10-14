@@ -107,7 +107,9 @@ venv.bak/
 music.db
 Music.csv
 
-
 *.aux
-
 *.out
+
+# some eclipse stuff
+.settings
+.buildpath
