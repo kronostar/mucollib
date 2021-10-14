@@ -1,5 +1,6 @@
 2021-10-14	Steve Martin  <kronostar.st4@gmail.com>
 	* Update README.md to point to correct website
+	* updated Copyright in LICENSE file
 	
 2021-10-11  steve  <kronostar.st4@gmail.com>
 	* src/dbimport.py: Fixes for 'is', 'is not' changes in Python 3.8
