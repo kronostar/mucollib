@@ -109,6 +109,8 @@ Music.csv
 
 *.aux
 *.out
+*.lof
+*.lot
 
 # some eclipse stuff
 .settings
