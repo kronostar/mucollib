@@ -2,7 +2,7 @@
 # 
 # Program: dbimport.py
 #  Author: Steve Martin
-# License: MIT
+# License: BSD-3-Clause
 # Copyright (C) 2018,2019,2021 Steve Martin
 #
 # CSV file format:
