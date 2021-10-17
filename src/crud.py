@@ -10,7 +10,6 @@
 import tkinter as tk
 from tkinter import messagebox, Button, Entry, Listbox, Label, Scrollbar, Toplevel, ttk, Frame
 import datetime
-# from idlelib import window
 
 myArtistData = []
 myAlbumData = []

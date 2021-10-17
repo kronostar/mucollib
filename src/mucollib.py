@@ -9,7 +9,6 @@
 import tkinter as tk
 from tkinter import messagebox, Button, Listbox, Label, Scrollbar, Toplevel, Frame
 import sqlite3 as lite
-import sys
 
 import crud
 import dbimport
