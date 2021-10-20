@@ -61,9 +61,28 @@ def importCSV(db):
                     genreid = crud.insertRow(db, 'Genre(Name)', (data[csvFields['genre']],))
                 else:
                     genreid = result[0][0]
+                    
+                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', \
+                    (data[csvFields['label']],))
+                if len(result) == 0:
+                    labelid = crud.insertRow(db, 'Label(Name)', (data[csvFields['label']],))
+                else:
+                    labelid = result[0][0]
+
+                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', \
+                    (data[csvFields['olabel']],))
+                if len(result) == 0:
+                    origlabelid = crud.insertRow(db, 'Label(Name)', (data[csvFields['olabel']],))
+                else:
+                    origlabelid = result[0][0]
                 
+                thisRelease = data[csvFields['year']]
+                if thisRelease == '':
+                    thisRelease = 1900
+
                 myYear = data[csvFields['released']]
                 if myYear == '':
                     myYear = 1900
-                detail = (data[csvFields['album']], myYear, artistid, formatid, genreid,)
-                crud.insertRow(db, 'Album(Name, Year, ArtistId, FormatId, GenreId)', detail)
+                    
+                detail = (data[csvFields['album']], thisRelease, myYear, artistid, formatid, genreid, labelid, origlabelid)
+                crud.insertRow(db, 'Album(Name, Year, OrigYear, ArtistId, FormatId, GenreId, LabelId, OrigLabelId)', detail)
