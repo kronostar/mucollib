@@ -40,42 +40,37 @@ def importCSV(db):
         for data in line:
             records += 1
             if records != 1:
-                result = crud.selectRow(db, 'ArtistId', 'Artist', 'Name = ?', '', \
-                    (data[csvFields['artist']],))
+                result = crud.selectRow(db, 'ArtistId', 'Artist', 'Name = ?', '', (data[csvFields['artist']],))
                 if len(result) == 0:
-                    detail = (data[csvFields['artist']], data[csvFields['sort']],)
+                    detail = (data[csvFields['artist']], data[csvFields['sort']])
                     artistid = crud.insertRow(db, 'Artist(Name, Sort)', detail)
                 else:
                     artistid = result[0][0]
 
-                result = crud.selectRow(db, 'FormatId', 'Format', 'Name = ?', '', \
-                    (data[csvFields['format']],))
+                result = crud.selectRow(db, 'FormatId', 'Format', 'Name = ?', '', (data[csvFields['format']],))
                 if len(result) == 0:
                     formatid = crud.insertRow(db, 'Format(Name)', (data[csvFields['format']],))
                 else:
                     formatid = result[0][0]
 
-                result = crud.selectRow(db, 'GenreId', 'Genre', 'Name = ?', '', \
-                    (data[csvFields['genre']],))
+                result = crud.selectRow(db, 'GenreId', 'Genre', 'Name = ?', '', (data[csvFields['genre']],))
                 if len(result) == 0:
                     genreid = crud.insertRow(db, 'Genre(Name)', (data[csvFields['genre']],))
                 else:
                     genreid = result[0][0]
                     
-                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', \
-                    (data[csvFields['label']],))
+                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', (data[csvFields['label']],))
                 if len(result) == 0:
                     labelid = crud.insertRow(db, 'Label(Name)', (data[csvFields['label']],))
                 else:
                     labelid = result[0][0]
-
-                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', \
-                    (data[csvFields['olabel']],))
+                    
+                result = crud.selectRow(db, 'LabelId', 'Label', 'Name = ?', '', (data[csvFields['olabel']],))
                 if len(result) == 0:
                     origlabelid = crud.insertRow(db, 'Label(Name)', (data[csvFields['olabel']],))
                 else:
                     origlabelid = result[0][0]
-                
+
                 thisRelease = data[csvFields['year']]
                 if thisRelease == '':
                     thisRelease = 1900
