@@ -13,23 +13,27 @@
 \hline 
 \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} & \multicolumn{1}{|c|}{\textbf{Links to}} \\
 \hline
-\textbf{\textit{id}} & int(11) & No &  &  \\ 
+\textbf{\textit{AlbumId}} & int(11) & No &  &  \\ 
 \hline 
 Name & varchar(120) & No &  &  \\ 
 \hline 
-Year & year(4) & No &  1900 &  \\ 
+Year & year(4) & No & 1900  &  \\ 
+%\hline 
+%CatNo & varchar(20) & Yes & NULL &  \\ 
 \hline 
 OrigYear & year(4) & No & 1900 &  \\ 
+%\hline 
+%OrigCatNo & varchar(20) & Yes & NULL &  \\ 
 \hline 
-ArtistId & int(11) & No &  & Artist (id) \\ 
+ArtistId & int(11) & No &  & Artist (ArtistId) \\ 
 \hline 
-FormatId & int(11) & No &  & Format (id) \\ 
+FormatId & int(11) & No &  & Format (FormatId) \\ 
 \hline 
-GenreId & int(11) & No &  & Genre (id) \\ 
+GenreId & int(11) & No &  & Genre (GenreId) \\ 
 \hline 
-LabelId & int(11) & No &  & Label (id) \\ 
+LabelId & int(11) & No &  & Label (LabelId) \\ 
 \hline 
-OrigLabelId & int(11) & No &  & Label (id) \\ 
+OrigLabelId & int(11) & No &  & Label (LabelId) \\ 
 \hline 
 \end{longtable}
 
@@ -61,7 +65,7 @@ OrigLabelId & int(11) & No &  & Label (id) \\
 \hline 
 \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} \\ 
 \hline
-\textbf{\textit{id}} & int(11) & No &  \\ 
+\textbf{\textit{ArtistId}} & int(11) & No &  \\ 
 \hline 
 Name & varchar(250) & No &  \\ 
 \hline 
@@ -78,7 +82,7 @@ Sort & varchar(250) & No &  \\
 \hline 
 \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} \\ 
 \hline
-\textbf{\textit{id}} & int(11) & No &  \\ 
+\textbf{\textit{FormatId}} & int(11) & No &  \\ 
 \hline 
 Name & varchar(20) & No &  \\ 
 \hline 
@@ -93,7 +97,7 @@ Name & varchar(20) & No &  \\
 \hline 
 \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} \\ 
 \hline
-\textbf{\textit{id}} & int(11) & No &  \\ 
+\textbf{\textit{GenreId}} & int(11) & No &  \\ 
 \hline 
 Name & varchar(45) & No &  \\ 
 \hline 
@@ -123,7 +127,7 @@ Name & varchar(45) & No &  \\
 \hline 
 \multicolumn{1}{|c|}{\textbf{Column}} & \multicolumn{1}{|c|}{\textbf{Type}} & \multicolumn{1}{|c|}{\textbf{Null}} & \multicolumn{1}{|c|}{\textbf{Default}} \\ 
 \hline
-\textbf{\textit{id}} & int(11) & No &  \\ 
+\textbf{\textit{LabelId}} & int(11) & No &  \\ 
 \hline 
 Name & varchar(45) & No &  \\ 
 \hline 
@@ -234,4 +238,3 @@ Name & varchar(45) & No &  \\
 %Song\_id & int(11) & No &  & Song (id) \\ 
 %\hline 
 %\end{longtable}
-

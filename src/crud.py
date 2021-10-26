@@ -53,7 +53,7 @@ def createDatabase(db):
     # insert start values for format, genre and label
     insertRow(db, 'Format(Name)', ("CD",))
     insertRow(db, 'Genre(Name)', ("Rock",))
-    insertRow(db, 'Label(Name)', ("Unknown",))
+    insertRow(db, 'Label(Name)', ("Enter/Choose a Record label",))
 
 def insertRow(db, table, data):
     sql = "INSERT INTO " + table + " VALUES("
@@ -84,10 +84,10 @@ def albumPage(con, db, listbox1, listbox2, myId):
     else:
         myAlbum = selectRow(db, 'AlbumId,Name,Year,OrigYear,ArtistId,FormatId,GenreId,LabelId,OrigLabelId', 'Album', 'AlbumId = ?', '', (myId,))
         myArtist = selectRow(db, 'Name', 'Artist', 'ArtistId = ?', '', (myAlbum[0][4],))
-    myFormat = selectRow(db, 'Name', 'Format', '', '', ())
-    myGenre = selectRow(db, 'Name', 'Genre', '', '', ())
-    myLabel = selectRow(db, 'Name', 'Label', '', '', ())
-    myOrigLabel = selectRow(db, 'Name', 'Label', '', '', ())
+    myFormat = selectComboValues(db, 'Name', 'Format')
+    myGenre = selectComboValues(db, 'Name', 'Genre')
+    myLabel = selectComboValues(db, 'Name', 'Label')
+    myOrigLabel = selectComboValues(db, 'Name', 'Label')
     
     # the window
     album = Toplevel()
@@ -169,6 +169,14 @@ def artistPage(con, db, listbox1, listbox2, myId):
     b2.grid(column = 1, row = 0)
     
 # Read
+def selectComboValues(db, field, table):
+    sql = "SELECT " + field + " FROM " + table
+    db.execute(sql)
+    data = []
+    for row in db.fetchall():
+        data.append(row[0])
+    return data
+
 def selectRow(db, field, table, condition, ordering, data):
     sql = "SELECT " + field + " FROM " + table
     if condition != '':
