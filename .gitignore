@@ -106,8 +106,13 @@ venv.bak/
 # some resource files
 music.db
 Music.csv
-
-
 *.aux
-
 *.out
+*.toc
+*.pdf
+*.log
+*lot
+*.lof
+*.mwb.bak
+*.synctex.gz
+*.toc
