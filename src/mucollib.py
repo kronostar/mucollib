@@ -1,15 +1,14 @@
-#!/usr/local/bin/python3.7
+#!/usr/bin/python3.9
 # 
 # Program: mucollib.py
 #  Author: Steve Martin
-# License: MIT
-# Copyright (c) 2018,2019 Steve Martin
+# License: BSD-3-Clause
+# Copyright (C) 2018,2019,2021 Steve Martin
 #
 
 import tkinter as tk
 from tkinter import messagebox, Button, Listbox, Label, Scrollbar, Toplevel, Frame
 import sqlite3 as lite
-import sys
 
 import crud
 import dbimport

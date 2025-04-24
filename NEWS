@@ -8,5 +8,6 @@ This is the NEWS file, get all the latest here!
 2016/10/28	Laravel 5.3 development begins
 2016/11/14	Version 0.2 Released, Laravel 5.3 code
 2018/12/02	Rewrite as a Python 3.7 Desktop App with SQLite
-			Placed under 3-clause BSD license
+			Placed under BSD-3-Clause license
 2019/11/06	Release version 1.0
+2021/10/14	Now python 3.9
