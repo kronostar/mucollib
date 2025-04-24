@@ -3,7 +3,7 @@
 # Program: mucollib.py
 #  Author: Steve Martin
 # License: BSD-3-Clause
-# Copyright (C) 2018,2019,2021 Steve Martin
+# Copyright (C) 2018,2019,2021,2025 Steve Martin
 #
 
 import tkinter as tk
